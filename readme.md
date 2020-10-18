@@ -2,70 +2,68 @@ English | <a href="readme.ru.html">Русский</a>
 
 ***
 
-# Round Interfaces Library
+# Round Interfaces Library (QML version)
 
 Round Interfaces Library is a collection of graphic objects classes for building round user interfaces.  
 
-![Plain Color Interface](docs/images/plain_color_interface.png)
-![Hi-Tech Interface](docs/images/hi_tech_interface.png)
-![Futuristic Interface](docs/images/futuristic_interface.png)
-![Palette Interface](docs/images/palette_interface.png)  
+![Volume Control](docs/images/qml_volume_control.png)
+![Chart](docs/images/qml_chart.png)
+![Radar](docs/images/qml_radar.png)
+![Progress Bar](docs/images/qml_progress_bar.png)  
 
 ## Library Purpose 
 
 Round interfaces can be used to:  
 
-* diversify the design of a project or product;  
-* provide compactness when visualizing information;  
-* get a virtual version of the physical control interfaces or measuring instruments.  
+* provide informativeness, compactness and speed of perception of data when visualizing it;  
+* get a virtual version of the physical control interfaces or measuring instruments;  
+* diversify the design of a project or product.  
 
 This library is being developed to simplify the process of designing and implementing round interfaces.  
 
-For example, round progress bar can be created with a few lines of code:  
-![Round Progress Bar](docs/images/segment_progress_bar.png)
+For example, the appearance of a round progress bar can be customized by setting the following properties:  
+![Round Progress Bar](docs/images/qml_custom_progress_bar.png)
 
 >
-    HTML:  
+    QML:  
 >>
-    <canvas id="progress-bar" width="200" height="200">
-        <div>Use a canvas-compatible browser</div>
-    </canvas>
->
-    JS:  
+    segmentArrayProgressBar.name = "bar_1";
+    segmentArrayProgressBar.cx = canvas_5.width / 2;
+    segmentArrayProgressBar.cy = canvas_5.height / 2;
+    segmentArrayProgressBar.r_in = 0.5 * canvas_5.width / 2;
+    segmentArrayProgressBar.thickness = 0.25 * canvas_5.width / 2;
+    segmentArrayProgressBar.visible = true;
 >>
-    let canvas = document.getElementById('progress-bar');
-    let context = canvas.getContext('2d');
-    context.width = canvas.width;
-    context.height = canvas.height;
-    let cx = context.width/2;
-    let cy = context.height/2;
+    segmentArrayProgressBar.value = 100;
+    segmentArrayProgressBar.background = 'rgba(0, 0, 0, 0)';
+    segmentArrayProgressBar.border_color = 'none';
+    segmentArrayProgressBar.segment_background = 'rgba(240, 240, 240, 1)';
+    segmentArrayProgressBar.active_segment_background = '#00A0E9';
 >>
-*let bar = new SegmentProgressBar('bar', context, cx, cy, 50, 25);*  
-*bar.draw();*  
+    segmentArrayProgressBar.build();
+    segmentArrayProgressBar.calc();
+    segmentArrayProgressBar.draw();  
 
 ## Tools  
 
-The library is written in JavaScript.  
-To render graphic elements, the HTML Canvas is used.  
+The library is written in QML with JavaScript.  
+To render graphic elements, the Canvas component is used.  
 
 The documentation in English and Russian is supplied as part of the library in HTML and Markdown formats.  
-To use the library, you need basic knowledge of HTML and JavaScript.  
+To use the library you need basic knowledge of Qt/QML and JavaScript.  
 
 ## Structure of project files and folders  
 
-> *js* - main folder with library files. To use the library in your own project, just connect these files.  
+> *components* - main folder with library files. To use the library in your own project, just connect these files.  
 
 > *docs* - main user documentation folder. The documentation is provided in HTML format.    
 > *docs-md* - documentation in MD format for revision and use in your own projects.  
 
-> *examples* - a folder with examples of using basic graphic objects.  
-> *gui-examples-js* - a folder with examples of implementation of user interfaces composed of basic graphic objects.  
+> *examples* - folder with examples of using library components.  
 
->> <a href="examples/gui-examples.html" target="_blank">Examples</a> describe how to build the shape and animation of round interfaces.  
-
-> *css* - folder with styles for examples.  
+> *fonts* - folder with fonts.  
 > *svg* - folder with vector images for examples.  
-> *sounds* - folder with sound samples for testing the round equalizer
+> *icons* - folder with application icons.  
 
 ## Basic elements of round interfaces (extended in the version 2.0 of the library)  
 
@@ -124,7 +122,7 @@ This library can be used and modified for commercial, educational and personal p
 Error messages and recommendations for improvement can be sent to the author's email.  
 
 ## About Library
-Version: 2.0
+QML version (including demo mobile app): 1.4  
 
 ## About Author  
 Author: Igor Tiunov  

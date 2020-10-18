@@ -2,71 +2,69 @@
 
 ***
 
-# Библиотека круговых интерфейсов
+# Библиотека круговых интерфейсов (QML-версия)
 
 Round Interfaces Library - это коллекция классов графических объектов для построения круговых интерфейсов пользователя.  
 
-![Plain Color Interface](docs/images/plain_color_interface.png)
-![Hi-Tech Interface](docs/images/hi_tech_interface.png)
-![Futuristic Interface](docs/images/futuristic_interface.png)
-![Palette Interface](docs/images/palette_interface.png)  
+![Volume Control](docs/images/qml_volume_control.png)
+![Chart](docs/images/qml_chart.png)
+![Radar](docs/images/qml_radar.png)
+![Progress Bar](docs/images/qml_progress_bar.png)  
 
 ## Назначение библиотеки 
 
 Круговые интерфейсы могут применяться с целью:  
 
-* разнообразить дизайн проекта или продукта;  
-* обеспечить компактность при визуализации информации;  
-* получить виртуальный вариант физических интерфейсов управления или измерительных приборов.  
+* обеспечить информативность, компактность и быстроту восприятия данных при их визуализации;  
+* получить виртуальный вариант физических интерфейсов управления или измерительных приборов;  
+* разнообразить дизайн проекта или продукта.  
 
 Данная библиотека разрабатывается с целью упростить процесс проектирования и реализации круговых интерфейсов.  
 
-Например, круговой индикатор прогресса можно создать в несколько строк кода:
+Например, внешний вид кругового индикатора прогресса можно настроить, задав следующие свойства:  
 
-![Round Progress Bar](docs/images/segment_progress_bar.png)
+![Round Progress Bar](docs/images/qml_custom_progress_bar.png)
 
 >
-    HTML:  
+    QML:  
 >>
-    <canvas id="progress-bar" width="200" height="200">
-        <div>Use a canvas-compatible browser</div>
-    </canvas>
->
-    JS:  
+    segmentArrayProgressBar.name = "bar_1";
+    segmentArrayProgressBar.cx = canvas_5.width / 2;
+    segmentArrayProgressBar.cy = canvas_5.height / 2;
+    segmentArrayProgressBar.r_in = 0.5 * canvas_5.width / 2;
+    segmentArrayProgressBar.thickness = 0.25 * canvas_5.width / 2;
+    segmentArrayProgressBar.visible = true;
 >>
-    let canvas = document.getElementById('progress-bar');
-    let context = canvas.getContext('2d');
-    context.width = canvas.width;
-    context.height = canvas.height;
-    let cx = context.width/2;
-    let cy = context.height/2;
+    segmentArrayProgressBar.value = 100;
+    segmentArrayProgressBar.background = 'rgba(0, 0, 0, 0)';
+    segmentArrayProgressBar.border_color = 'none';
+    segmentArrayProgressBar.segment_background = 'rgba(240, 240, 240, 1)';
+    segmentArrayProgressBar.active_segment_background = '#00A0E9';
 >>
-*let bar = new SegmentProgressBar('bar', context, cx, cy, 50, 25);*  
-*bar.draw();*  
+    segmentArrayProgressBar.build();
+    segmentArrayProgressBar.calc();
+    segmentArrayProgressBar.draw();
 
 ## Средства реализации  
 
-Библиотека написана на языке JavaScript.  
-Для отрисовки графических элементов используется HTML элемент Canvas.  
+Библиотека написана на QML с применением JavaScript.  
+Для отрисовки графических элементов используется компонент Canvas.  
 
 Документация на английском и русском языках поставляется в составе библиотеки в форматах HTML и Markdown.  
-Для использования библиотеки необходимы базовые знания HTML и JavaScript.  
+Для использования библиотеки необходимы базовые знания Qt/QML и JavaScript.  
 
 ## Структура файлов и папок проекта  
 
-> *js* - основная папка с файлами библиотеки. Для использования библиотеки в собственном проекте достаточно подключить эти файлы.  
+> *components* - основная папка с файлами библиотеки. Для использования библиотеки в собственном проекте достаточно подключить эти файлы.  
 
 > *docs* - папка с документацией в .html формате. Документация приведена на английском и русском языках.    
 > *docs-md* - папка с документацией в .md формате для исправления ошибок, доработки и использования в собственных проектах.  
 
-> *examples* - папка с примерами использования базовых графических объектов.  
-> *gui-examples-js* - папка с примерами реализации интерфейсов пользователя, составленных из базовых графических объектов.  
+> *examples* - папка с примерами использования компонентов библиотеки.  
 
->> <a href="examples/gui-examples.html" target="_blank">Примеры</a> описывают способы построения формы и анимации круговых интерфейсов.  
-
-> *css* - папка с файломи стилей для оформления примеров.  
+> *font* - папка со шрифтами.  
 > *svg* - папка с векторными изображениями для оформления примеров.  
-> *sounds* - папка с музыкальными файлами для тестирования кругового эквалайзера
+> *icons* - папка с иконками приложения.  
 
 ## Базовые элементы круговых интерфейсов (расширено во 2-й версии библиотеки)  
 
@@ -124,7 +122,7 @@ Round Interfaces Library - это коллекция классов графич
 Сообщения об ошибках и рекомендации по доработке можно направлять на электронную почту автора.  
 
 ## О библиотеке
-Версия: 2.0
+Версия на QML (включая демонстрационное мобильное приложение): 1.4  
 
 ## Об авторе  
 Автор: Игорь Тиунов  
