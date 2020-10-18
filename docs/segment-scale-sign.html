@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>segment-scale-sign</title>
+<style type="text/css">/*...*/</style>
+</head>
+<body>
+<p><a href="../readme.html">Home</a> → Segment Scale Sign</p>
+<hr/><h1>SegmentScaleSign</h1><h2>Contents</h2>
+<ol>
+  <li><a href="#description">Object description</a></li>
+  <li><a href="#dependencies">Object dependencies</a></li>
+  <li><a href="#constructor">Object creation</a></li>
+  <li><a href="#properties">Properties</a></li>
+  <li><a href="#methods">Methods</a></li>
+  <li><a href="#events">Events</a></li>
+</ol><h2><a id="description"></a>Object description</h2><p>Segment Scale Sign is a sign on the segment scale corresponding to a certain measured value (Fig. 1).<br/>SegmentScaleSign is an auxilary class of the round interfaces library for implementing a round scale. </p><p><img src="../docs/images/segment_scale_sign.png" alt="SegmentScaleSign" /><br/>Fig. 1 - Segment Scale Sign</p><h2><a id="dependencies"></a>Object dependencies</h2><p>The following scripts should be included in the &lt;head&gt; section: </p>
+<ul>
+  <li>utilities.js</li>
+</ul><h2><a id="constructor"></a>Object creation</h2><p>To create an object, the main parameters are passed to the constructor function: </p>
+<blockquote><p><em>id</em> - sign identificator as a text string.<br/><em>context</em> - CanvasRenderingContext2D for drawing a sign.<br/><em>cx</em> - X coordinate of the segment scale center.<br/><em>cy</em> - Y coordinate of the segment scale center.<br/><em>r_in</em> - sign inner radius.<br/><em>text</em> - sign text.<br/><em>angle</em> - angle of the sign in degrees. </p>
+</blockquote><h2><a id="properties"></a>Properties</h2><h3>Sign Style</h3>
+<blockquote><p><em>font</em>.<br/><em>text_color</em>.<br/><em>text_border_width</em>.<br/><em>text_border_color</em>.<br/><em>text_direction</em>. </p>
+  <blockquote><p>Valid <em>text_direction</em> values:<br/><em>"vertical"</em>.<br/><em>"clockwise"</em>.<br/><em>"anticlockwise"</em>.<br/><em>"from-center"</em>.<br/><em>"to-center"</em>. </p>
+  </blockquote>
+</blockquote><h3>Sign Flags</h3>
+<blockquote><p><em>visible</em> - flag ensures the visibility of the object if set in <em>true</em>.<br/><em>in_progress</em> - flag takes the value <em>true</em> during the animation. </p>
+</blockquote><h2><a id="methods"></a>Methods</h2>
+<blockquote><p><em>calc()</em> - performs basic calculations of the shape and style of a mark when it is created, changed and during animation.<br/>This method should be called after changing the properties of the object so that they take effect. </p><p><em>draw()</em> - draws an object. </p><p><em>instanceCopy()</em> - creates an independent copy of the object. </p>
+</blockquote><h3>Sign Animation</h3><p>Sign animation is various changes in the shape, position, or style of the sign over time. </p><p>Key animation parameters: </p>
+<blockquote><p><em>duration</em> - animation duration. Sets in seconds.<br/><em>delay</em> - delay before the start of the animation. Sets in seconds.<br/><em>direction</em> - animation direction. Valid values ​​depend on the type of animation. </p>
+</blockquote><h4>Animation Methods</h4>
+<blockquote><p><em>appear(direction, duration, delay)</em> - the appearance of a sign due to a gradual change in its shape. </p>
+  <blockquote><p>Valid values ​​for the <em>direction</em>:<br/><em>"from-center"</em> - from scale center.<br/><em>"to-center"</em> - to scale center. </p>
+  </blockquote><p><em>disappear(direction, duration, delay)</em> - the disappearance of a sign due to a gradual change in its shape. </p>
+  <blockquote><p>Valid values ​​for the <em>direction</em>:<br/><em>"from-center"</em> - from scale center.<br/><em>"to-center"</em> - to scale center. </p>
+  </blockquote><p><em>fadeIn(duration, delay)</em> - gradual appearance of a sign due to a change in its transparency. </p><p><em>fadeOut(duration, delay)</em> - gradual disappearance of a sign due to a change in its transparency. </p>
+</blockquote><h2><a id="events"></a>Events</h2><p>Events triggered by a SegmentScaleSign are implemented using a CustomEvent.<br/>In the <em>detail.sign</em> field, a link to the object itself is passed. </p>
+<blockquote><p><em>segment-scale-sign-changed</em> - event dispatches every time the <em>calc()</em> method is executed. </p><p><em>segment-scale-sign-appeared</em><br/><em>segment-scale-sign-disappeared</em><br/><em>segment-scale-sign-faded-in</em><br/><em>segment-scale-sign-faded-out</em> </p>
+</blockquote>
+<hr/><p><a href="../readme.html">Home</a> → Segment Scale Sign </p>
+</body>
+</html>

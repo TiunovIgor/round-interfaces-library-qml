@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>segment-level.ru</title>
+<style type="text/css">/*...*/</style>
+</head>
+<body>
+<p><a href="../../readme.ru.html">Главная</a> → Уровень сегментов</p>
+<hr/><h1>SegmentLevel</h1><h2>Содержание</h2>
+<ol>
+  <li><a href="#description">Описание объекта</a></li>
+  <li><a href="#dependencies">Зависимости объекта</a></li>
+  <li><a href="#constructor">Создание объекта</a></li>
+  <li><a href="#examples">Примеры</a></li>
+  <li><a href="#properties">Свойства</a></li>
+  <li><a href="#methods">Методы</a></li>
+  <li><a href="#events">События</a></li>
+</ol><h2><a id="description"></a>Описание объекта</h2><p>Сегментный уровень – совокупность сегментов, объединенных для совместного управления и анимации. (рис. 1).</p><p><img src="../../docs/images/segment_level.png" alt="SegmentLevel" /><br/>Рис. 1 - Уровень сегментов</p><h2><a id="dependencies"></a>Зависимости объекта</h2><p>Для создания объекта типа SegmentLevel необходимо подключить следующие скрипты: </p>
+<ul>
+  <li>segment.js</li>
+  <li>segment-gradient.js</li>
+  <li>utilities.js</li>
+</ul><h2><a id="constructor"></a>Создание объекта</h2><p>Для создания объекта в функцию-конструктор передаются основные параметры: </p>
+<blockquote><p><em>id</em> - идентификатор сегмента в виде текстовой строки.<br/><em>context</em> - контекст типа CanvasRenderingContext2D для отрисовки сегмента.<br/><em>cx</em> - координата X центра сегментного уровня.<br/><em>cy</em> - координата Y центра сегментного уровня.<br/><em>r_in</em> - условный внутренний радиус. Радиусы сегментов одного уровня могут быть разными.</p>
+</blockquote><h2><a id="examples"></a>Примеры</h2><p><a href="../../examples/segment-level-examples.html" target="_blank">Примеры</a> использования различных свойств и методов объекта. </p><h2><a id="properties"></a>Свойства</h2><h3>Флаги уровня сегментов</h3>
+<blockquote><p><em>visible</em> - видимость. Значение <em>true</em> обеспечивает видимость объекта.<br/><em>segments_visible</em> - видимость сегментов.<br/><em>in_progress</em> - в процессе. Флаг принимает значение <em>true</em> в процессе анимации уровня сегментов. </p>
+</blockquote><h2><a id="methods"></a>Методы</h2>
+<blockquote><p><em>addSegment(segment)</em> - добавляет <em>segment</em> в список сегментов уровня. </p><p><em>removeSegment(segment)</em> - удаляет <em>segment</em> из списка сегментов уровня.</p><p><em>build</em> - используется, когда нужно запустить событие <em>segment-level-changed</em> для отрисовки сегментов уровня. </p><p><em>draw()</em> - функция отрисовки уровня. Вызывает метод .draw() для каждого объекта из списка сегментов уровня.</p><p><em>instanceCopy()</em> - создание независимой копии объекта.</p>
+</blockquote><h3>Анимация уровня сегментов</h3><p>Анимация уровня - это различные изменения формы, положения или стиля оформления сегментов уровня со временем.</p><p>Основные параметры анимации:</p>
+<blockquote><p><em>duration</em> - длительность анимации. Задается в секундах.<br/><em>delay</em> - задержка перед началом анимации. Задается в секундах.<br/><em>direction</em> - направление анимации. Набор допустимых значений зависит от вида анимации.<br/><em>order</em> - порядок анимации. Допустимые значения: </p>
+  <blockquote><p><em>"together"</em> - вместе. <em>"one-by-one-clockwise"</em> - один за другим по часовой стрелке.<br/><em>"one-by-one-anticlockwise"</em> - один за другим против часовой стрелки.<br/>Для поочередной анимации длительность <em>duration</em> будет разделена равномерно между сегментами уровня с учетом задержки между анимацией сегментов. </p>
+  </blockquote><p><em>lag</em> - задержка между анимацией сегментов уровня. Задается в секундах. </p>
+</blockquote><h4>Методы анимации</h4>
+<blockquote><p><em>appear(direction, duration, delay)</em> - появление сегментов уровня за счет постепенного изменения их формы. </p>
+  <blockquote><p>Допустимые значения параметра <em>direction</em> для метода анимации появления:<br/><em>"from-center"</em> - от центра сегмента.<br/><em>"to-center"</em> - к центру сегмента.<br/><em>"from-axis"</em> - от оси сегмента.<br/><em>"clockwise"</em> - по часовой стрелке.<br/><em>"anticlockwise"</em> - против часовой стрелки.<br/>Если все сегменты уровня появились, то запускается событие <em>segment-level-appeared</em>.</p>
+  </blockquote><p><em>disappear(direction, duration, delay)</em> - исчезание сегментов уровня за счет постепенного изменения их формы. </p>
+  <blockquote><p>Допустимые значения параметра <em>direction</em> для метода анимации исчезания:<br/><em>"from-center"</em> - от центра сегмента.<br/><em>"to-center"</em> - к центру сегмента.<br/><em>"to-axis"</em> - к оси сегмента.<br/><em>"clockwise"</em> - по часовой стрелке.<br/><em>"anticlockwise"</em> - против часовой стрелки.<br/>Если все сегменты уровня исчезли, то запускается событие <em>segment-level-disappeared</em>.</p>
+  </blockquote><p><em>rotate(order, lag, direction, angle, duration, delay)</em> - вращение сегментов уровня.</p>
+  <blockquote><p>Угол поворота <em>angle</em> задается в градусах. </p><p>Допустимые значения параметра <em>direction</em> для метода анимации вращения:<br/><em>"clockwise"</em> - по часовой стрелке.<br/><em>"anticlockwise"</em> - против часовой стрелки.<br/>Если все сегменты уровня повернуты, то запускается событие <em>segment-level-rotated</em>.</p>
+  </blockquote><p><em>fadeIn(order, lag, duration, delay)</em> - появление сегментов уровня за счет постепенного изменения их прозрачности. </p>
+  <blockquote><p>Если все сегменты уровня выцвели, то запускается событие <em>segment-level-faded-in</em>. </p>
+  </blockquote><p><em>fadeOut(order, lag, duration, delay)</em> - исчезание сегментов уровня за счет постепенного изменения их прозрачности.</p>
+  <blockquote><p>Если все сегменты уровня выцвели, то запускается событие <em>segment-level-faded-out</em>. </p>
+  </blockquote>
+</blockquote><h2><a id="events"></a> События</h2><p>События, запускаемые объектом SegmentLevel, реализованы с помощью CustomEvent.<br/>В параметре <em>detail.level</em> передается ссылка на сам объект.</p>
+<blockquote><p><em>segment-level-appeared</em> - все сегменты уровня появились.<br/><em>segment-level-disappeared</em> - все сегменты уровня исчезли.<br/><em>segment-level-rotated</em> - все сегменты уровня повернуты.<br/><em>segment-level-faded-in</em> - все сегменты уровня появились выцветанием.<br/><em>segment-level-faded-out</em> - все сегменты уровня исчезли выцветанием. </p>
+</blockquote>
+<hr/><p><a href="../../readme.ru.html">Главная</a> → Уровень сегментов </p>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>segment-equalizer</title>
+<style type="text/css">/*...*/</style>
+</head>
+<body>
+<p><a href="../readme.html">Home</a> → Segment Equalizer </p>
+<hr/><h1>SegmentEqualizer</h1><h2>Contents</h2>
+<ol>
+  <li><a href="#description">Object description</a></li>
+  <li><a href="#dependencies">Object dependencies</a></li>
+  <li><a href="#constructor">Object creation</a></li>
+  <li><a href="#examples">Examples</a></li>
+  <li><a href="#properties">Properties</a></li>
+  <li><a href="#methods">Methods</a></li>
+  <li><a href="#events">Events</a></li>
+</ol><h2><a id="description"></a>Object description</h2><p>Equalizer is a graphic element for visualizing the signal amplitude depending on the frequency characteristics (Fig. 1).</p><p><img src="../docs/images/segment_equalizer.png" alt="SegmentEqualizer" /><br/>Fig. 1 - Segment Equalizer. </p><h2><a id="dependencies"></a>Object dependencies</h2><p>The following scripts should be included in the &lt;head&gt; section: </p>
+<ul>
+  <li>segment.js</li>
+  <li>segment-gradient.js</li>
+  <li>utilities.js</li>
+</ul><h2><a id="constructor"></a>Object creation</h2><p>To create an object, the main parameters are passed to the constructor function. These parameters are used to create the base segment: </p>
+<blockquote><p><em>id</em> - equalizer identificator as a text string.<br/><em>context</em> - CanvasRenderingContext2D for drawing the equalizer.<br/><em>cx</em> - X coordinate of the base segment center.<br/><em>cy</em> - Y coordinate of the base segment center.<br/><em>r_in</em> - base segment inner radius.<br/><em>thickness</em> - thickness of the base segment.<br/><em>init_angle</em> - the initial angle of the base segment in degrees. May take negative values. <em>angle</em> - angle of the base segment in degrees. </p>
+</blockquote><h2><a id="examples"></a>Examples</h2><p><a href="../examples/round-equalizer-examples.html" target="_blank">Examples</a> of using various properties and methods of the object. </p><h2><a id="properties"></a>Properties</h2>
+<blockquote><p><em>values</em> - array of coefficients in the range [-1;1] which determining the waveform.<br/>For visualization of the waveform, coefficients are applied to the thickness of the array segments. </p>
+</blockquote><h3>Base Segment Style</h3>
+<blockquote><p><em>gradient</em> - base segment fill gradient. Type of value is <a href="segment-gradient.html">SegmentGradient</a>.<br/><em>background</em> - base segment fill color (applies if fill gradient is not specified).<br/><em>border_width</em> - base segment border width.<br/><em>border_color</em> - base segment border color. </p>
+</blockquote><p>The borders of the base segment can be set separately using direct access to the base segment through the <em>base_segment</em> property. </p><h3>Array Segments Parameters</h3>
+<blockquote><p><em>segments_count</em> - the number of segments-elements of the array.<br/><em>segment_angle</em> - array segment angle (ignored if <em>proportional</em> flag is set in <em>true</em>).<br/><em>segment_thickness</em> - array segment thickness.<br/><em>segment_position</em> - array segments position. Valid values: </p>
+  <blockquote><p><em>"inner"</em> - adjoining the inner border of the base segment.<br/><em>"middle"</em> - location in the middle of the base segment.<br/><em>"outer"</em> - adjoining the outer border of the base segment. </p>
+  </blockquote><p><em>segment_r_in</em> - array segment inner radius. Ignored if property <em>segment_position</em> is set.<br/><em>start_with</em> - start placing objects on the base segment with segment or with empty space. Valid values: </p>
+  <blockquote><p><em>"segment"</em> - start with segment.<br/><em>"space"</em> - start with empty space. </p>
+  </blockquote>
+</blockquote><h3>Array Segments Style</h3>
+<blockquote><p><em>segment_gradient</em> - array segments fill gradient. Type of value is <a href="segment-gradient.html">SegmentGradient</a>.<br/><em>segment_background</em> - array segments fill color (applies if fill gradient is not specified).<br/><em>segment_border_width</em> - array segments border width.<br/><em>segment_border_color</em> - array segments border color. </p>
+</blockquote><h3>Object Flags</h3>
+<blockquote><p><em>proportional</em> - value <em>true</em> provides the same angles for array segments and the distance between them.<br/><em>full_thickness</em> - value <em>true</em> provides the same thickness of array segments and base segment.<br/><em>visible</em> - value <em>true</em> ensures object visibility.<br/><em>segments_visible</em> - value <em>true</em> ensures array segments visibility.<br/><em>in_progress</em> - flag takes the value <em>true</em> during the animation. </p>
+</blockquote><h2><a id="methods"></a>Methods</h2>
+<blockquote><p><em>build()</em> - performs basic calculations of the shape and style of the base segment and array elements, taking into account the specified properties and flags. </p><p><em>draw()</em> - draws an object. </p><p><em>instanceCopy()</em> - creates an independent copy of the object. </p><p><em>changeValues(values, speed, delay)</em> - function of applying new coefficients <em>values</em>, defining the waveform, with <em>speed</em> after <em>delay</em>. </p>
+</blockquote><h2><a id="events"></a>Events</h2><p>Events triggered by a SegmentEqualizer are implemented using a CustomEvent.<br/>In the <em>detail.equalizer</em> field, a link to the object itself is passed. </p>
+<blockquote><p><em>segment-equalizer-changed</em> - object is changed. </p>
+</blockquote>
+<hr/><p><a href="../readme.html">Home</a> → Segment Equalizer </p>
+</body>
+</html>

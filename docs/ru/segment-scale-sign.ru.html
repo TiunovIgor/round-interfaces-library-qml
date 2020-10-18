@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>segment-scale-sign.ru</title>
+<style type="text/css">/*...*/</style>
+</head>
+<body>
+<p><a href="../../readme.ru.html">Главная</a> → Знак сегментной шкалы</p>
+<hr/><h1>SegmentScaleSign</h1><h2>Содержание</h2>
+<ol>
+  <li><a href="#description">Описание объекта</a></li>
+  <li><a href="#dependencies">Зависимости объекта</a></li>
+  <li><a href="#constructor">Создание объекта</a></li>
+  <li><a href="#properties">Свойства</a></li>
+  <li><a href="#methods">Методы</a></li>
+  <li><a href="#events">События</a></li>
+</ol><h2><a id="description"></a>Описание объекта</h2><p>Знак сегментной шкалы – знак на шкале (символ, подпись), соответствующий некоторому измеряемому значению (рис. 1).<br/>SegmentScaleSign - вспомогательный класс библиотеки круговых интерфейсов для реализации сегментной шкалы. </p><p><img src="../../docs/images/segment_scale_sign.png" alt="SegmentScaleSign" /><br/>Рис. 1 - Знак сегментной шкалы</p><h2><a id="dependencies"></a>Зависимости объекта</h2><p>Для создания объекта типа SegmentScaleSign необходимо подключить следующие скрипты: </p>
+<ul>
+  <li>utilities.js</li>
+</ul><h2><a id="constructor"></a>Создание объекта</h2><p>Для создания объекта в функцию-конструктор передаются основные параметры: </p>
+<blockquote><p><em>id</em> - идентификатор подписи в виде текстовой строки.<br/><em>context</em> - контекст типа CanvasRenderingContext2D для отрисовки подписи.<br/><em>cx</em> - координата X центра сегментной шкалы.<br/><em>cy</em> - координата Y центра сегментной шкалы.<br/><em>r_in</em> - внутренний радиус подписи.<br/><em>text</em> - текст подписи.<br/><em>angle</em> - угол подписи в градусах. </p>
+</blockquote><h2><a id="properties"></a>Свойства</h2><h3>Стиль оформления подписи</h3>
+<blockquote><p><em>font</em> - шрифт подписи.<br/><em>text_color</em> - цвет текста.<br/><em>text_border_width</em> - толщина границы текста подписи.<br/><em>text_border_color</em> - цвет границы текста подписи.<br/><em>text_direction</em> - направление текста. </p>
+  <blockquote><p>Допустимые значения параметра <em>text_direction</em>:<br/><em>"vertical"</em> - вертикально относительно холста.<br/><em>"clockwise"</em> - по часовой стрелке.<br/><em>"anticlockwise"</em> - против часовой стрекли.<br/><em>"from-center"</em> - от центра.<br/><em>"to-center"</em> - к центру. </p>
+  </blockquote>
+</blockquote><h3>Флаги подписи</h3>
+<blockquote><p><em>visible</em> - видимость. Значение <em>true</em> обеспечивает видимость объекта.<br/><em>in_progress</em> - в процессе. Флаг принимает значение <em>true</em> в процессе анимации. </p>
+</blockquote><h2><a id="methods"></a>Методы</h2>
+<blockquote><p><em>calc()</em> - выполняет основные вычисления формы и внешнего вида подписис при ее создании, изменении параметров и в процессе анимации.<br/>Этот метод необходимо вызывать после изменения свойств объекта, чтобы они вступили в силу. </p><p><em>draw()</em> - функция отрисовки подписи. </p><p><em>instanceCopy()</em> - создание независимой копии объекта.</p>
+</blockquote><h3>Анимация отметки</h3><p>Анимация знака - это различные изменения формы, положения или стиля оформления подписи шкалы со временем. </p><p>Основные параметры анимации:</p>
+<blockquote><p><em>duration</em> - длительность анимации. Задается в секундах.<br/><em>delay</em> - задержка перед началом анимации. Задается в секундах.<br/><em>direction</em> - направление анимации. Набор допустимых значений зависит от вида анимации. </p>
+</blockquote><h4>Методы анимации</h4>
+<blockquote><p><em>appear(direction, duration, delay)</em> - появление подписи за счет постепенного изменения формы. </p>
+  <blockquote><p>Допустимые значения параметра <em>direction</em> для метода анимации появления:<br/><em>"from-center"</em> - от центра базового сегмента шкалы.<br/><em>"to-center"</em> - к центру базового сегмента шкалы.<br/><em>"from-middle"</em> - из середины подписи. </p>
+  </blockquote><p><em>disappear(direction, duration, delay)</em> - исчезание подписи за счет постепенного изменения формы. </p>
+  <blockquote><p>Допустимые значения параметра <em>direction</em> для метода анимации исчезания:<br/><em>"from-center"</em> - от центра базового сегмента шкалы.<br/><em>"to-center"</em> - к центру базового сегмента шкалы.<br/><em>"to-middle"</em> - к середине подписи. </p>
+  </blockquote><p><em>fadeIn(duration, delay)</em> - постепенное появление подписи за счет изменения прозрачности. </p><p><em>fadeOut(duration, delay)</em> - постепенное исчезание подписи за счет изменения прозрачности.</p>
+</blockquote><h2><a id="events"></a> События</h2><p>События, запускаемые объектом SegmentScaleSign, реализованы с помощью CustomEvent.<br/>В поле <em>detail.sign</em> передается ссылка на сам объект. </p>
+<blockquote><p><em>segment-scale-sign-changed</em> - подпись сегментной шкалы изменена. Событие запускается каждый раз, когда выполняется метод calc(). </p><p><em>segment-scale-sign-appeared</em> - подпись появилась.<br/><em>segment-scale-sign-disappeared</em> - подпись исчезла.<br/><em>segment-scale-sign-faded-in</em> - подпись появилась методом выцветания.<br/><em>segment-scale-sign-faded-out</em> - подпись исчезла методом выцветания. </p>
+</blockquote>
+<hr/><p><a href="../../readme.ru.html">Главная</a> → Знак сегментной шкалы </p>
+</body>
+</html>

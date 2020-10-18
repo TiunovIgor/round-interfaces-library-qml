@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>segment-radar.ru</title>
+<style type="text/css">/*...*/</style>
+</head>
+<body>
+<p><a href="../../readme.ru.html">Главная</a> → Радар </p>
+<hr/><h1>SegmentRadar</h1><h2>Содержание</h2>
+<ol>
+  <li><a href="#description">Описание объекта</a></li>
+  <li><a href="#dependencies">Зависимости объекта</a></li>
+  <li><a href="#constructor">Создание объекта</a></li>
+  <li><a href="#examples">Примеры</a></li>
+  <li><a href="#properties">Свойства</a></li>
+  <li><a href="#methods">Методы</a></li>
+  <li><a href="#events">События</a></li>
+</ol><h2><a id="description"></a>Описание объекта</h2><p>Радар (графический объект) – круговой интерфейс для визуализации данных, поступающих с радиолокационной станции или радара (рис. 1). </p><p><img src="../../docs/images/segment_radar.png" alt="SegmentGeometry" /><br/>Рис. 1 - Радар</p><h2><a id="dependencies"></a>Зависимости объекта</h2><p>Для создания объекта типа SegmentRadar необходимо подключить следующие скрипты: </p>
+<ul>
+  <li>segment.js</li>
+  <li>segment-dot.js</li>
+  <li>segment-grid.js</li>
+  <li>segment-gradient.js</li>
+  <li>utilities.js</li>
+</ul><h2><a id="constructor"></a>Создание объекта</h2><p>Для создания объекта в функцию-конструктор передаются основные параметры: </p>
+<blockquote><p><em>id</em> - идентификатор радара в виде текстовой строки.<br/><em>context</em> - контекст типа CanvasRenderingContext2D для отрисовки радара.<br/><em>cx</em> - координата X центра радара.<br/><em>cy</em> - координата Y центра радара.<br/><em>thickness</em> - толщина радара. </p>
+</blockquote><h2><a id="examples"></a>Примеры</h2><p><a href="../../examples/round-radar-examples.html" target="_blank">Примеры</a> использования различных свойств и методов объекта. </p><h2><a id="properties"></a>Свойства</h2><p><em>factor</em> - коэффициент масштабирования целей на экране радара. </p><p>Радар - это составной объект. В его состав входят: </p>
+<blockquote><p><em>grid</em> - координатная сетка, представленная объектом типа <a href="segment-grid.ru.html">SegmentGrid</a>.<br/><em>locator</em> - локатор, представленный объектом типа сегмент <a href="segment.ru.html">Segment</a>.<br/><em>frame</em> - рамка, представленная объектом типа сегмент <a href="segment.ru.html">Segment</a>. </p>
+</blockquote><h3>Стиль оформления радара</h3>
+<blockquote><p><em>gradient</em> - градиент заливки координатной сетки типа <a href="segment-gradient.ru.html">SegmentGradient</a>. <em>background</em> - цвет заливки координатной сетки (применяется, если не задан градиент заливки).<br/><em>border_width</em> - толщина границ координатной сетки.<br/><em>border_color</em> - цвет границ координатной сетки. </p><p><em>locator_angle</em> - угол сегмента, представляющего локатор.<br/><em>locator_period</em> - период вращения локатора.<br/><em>locator_gradient</em> - градиен заливки локатора.<br/><em>locator_border_width</em> - толщина границ локатора.<br/><em>locator_border_color</em> - цвет границ локатора. </p><p><em>frame_gradient</em> - градиент заливки рамки.<br/><em>frame_background</em> - цвет заливки рамки (применяется, если на задан градиент заливки).<br/><em>frame_border_width</em> - толщина границ рамки.<br/><em>frame_border_color</em> - цвет границ рамки. </p><p><em>dot_radius</em> - радиус точек, представляющих цели.<br/><em>dot_gradient</em> - градиент заливки целей.<br/><em>dot_background</em> - цвет заливки целей.<br/><em>dot_border_width</em> - толщина границ целей.<br/><em>dot_border_color</em> - цвет границ целей. </p>
+</blockquote><h3>Флаги сегмента</h3>
+<blockquote><p><em>visible</em> - видимость. Значение <em>true</em> обеспечивает видимость объекта.<br/><em>targets_visible</em> - видимость целей.<br/><em>locator_enabled</em> - режим работы локатора: <em>true</em> - включен, <em>false</em> - выключен.<br/><em>in_progress</em> - в процессе. Флаг принимает значение <em>true</em> в процессе анимации. </p>
+</blockquote><h2><a id="methods"></a>Методы</h2>
+<blockquote><p><em>build()</em> - выполняет основные вычисления формы и внешнего вида радара с учетом заданных свойств и флагов. </p><p><em>draw()</em> - функция отрисовки радара. </p><p><em>instanceCopy()</em> - создание независимой копии объекта. </p><p><em>startLocator()</em> - включение локатора. </p><p><em>rotateLocator()</em> - вращение локатора (используется автоматически, если локатор включен). </p><p><em>stopLocator()</em> - выключение локатора. </p><p><em>targetsToDots(targets)</em> - метод расчета координат целей на экране локатора по входному массиву целей.<br/>Массив целей должен содержать объекты в формате: </p>
+  <blockquote><p>{ 'id' : идентификатор, 'x' : абсцисса, 'y' : ордината, 'angle' : угол } </p>
+  </blockquote>
+</blockquote><h3>Анимация сегмента</h3><p>Радар предназначен для ослеживания координат целей.<br/>При изменении положения целей необходимо вызывать метод targetsToDots, в который необходимо передать обновленный массив целей.<br/>Этот метод обновит список точек, представляющих цели, и запустит событие <em>segment-radar-changed</em>.<br/>По наступлении этого события необходимо очистить холст и вызвать метод draw() для отрисовки радара. </p><h2><a id="events"></a> События</h2><p>События, запускаемые объектом SegmentRadar, реализованы с помощью CustomEvent.<br/>В поле <em>detail.radar</em> передается ссылка на сам объект. </p>
+<blockquote><p><em>segment-radar-changed</em> - состояние радара изменено. </p>
+</blockquote>
+<hr/><p><a href="../../readme.ru.html">Главная</a> → Радар </p>
+</body>
+</html>

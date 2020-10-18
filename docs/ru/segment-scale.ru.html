@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>segment-scale.ru</title>
+<style type="text/css">/*...*/</style>
+</head>
+<body>
+<p><a href="../../readme.ru.html">Главная</a> → Сегментная шкала </p>
+<hr/><h1>SegmentScale</h1><h2>Содержание</h2>
+<ol>
+  <li><a href="#description">Описание объекта</a></li>
+  <li><a href="#dependencies">Зависимости объекта</a></li>
+  <li><a href="#constructor">Создание объекта</a></li>
+  <li><a href="#examples">Примеры</a></li>
+  <li><a href="#properties">Свойства</a></li>
+  <li><a href="#methods">Методы</a></li>
+  <li><a href="#events">События</a></li>
+</ol><h2><a id="description"></a>Описание объекта</h2><p>Сегментная шкала – круговая измерительная шкала (рис. 1).</p><p><img src="../../docs/images/segment_scale_geometry.png" alt="SegmentScaleGeometry" /><br/>рис. 1 - Геометрия сегментной шкалы.</p><h2><a id="dependencies"></a>Зависимости объекта</h2><p>Для создания объекта типа SegmentScale необходимо подключить следующие скрипты: </p>
+<ul>
+  <li>segment.js</li>
+  <li>segment-scale-mark.js</li>
+  <li>segment-scale-sign.js</li>
+  <li>segment-gradient.js</li>
+  <li>utilities.js</li>
+</ul><h2><a id="constructor"></a>Создание объекта</h2><p>Для создания сегментной шкалы в функцию-конструктор передаются основные параметры, которые используются для создания базового, или опорного, сегмента:</p>
+<blockquote><p><em>id</em> - идентификатор сегментной шкалы в виде текстовой строки.<br/><em>context</em> - контекст типа CanvasRenderingContext2D для отрисовки сегмента.<br/><em>cx</em> - координата X центра базового сегмента шкалы.<br/><em>cy</em> - координата Y центра базового сегмента шкалы.<br/><em>r_in</em> - внутренний радиус базового сегмента шкалы.<br/><em>thickness</em> - толщина базового сегмента шкалы.<br/><em>init_angle</em> - начальный угол базового сегмента шкалы в градусах. Может принимать отрицательные значения. <em>angle</em> - угол базового сегмента шкалы в градусах.</p>
+</blockquote><h2><a id="examples"></a>Примеры</h2><p><a href="../../examples/segment-scale-examples.html" target="_blank">Примеры</a> использования различных свойств и методов объекта. </p><h2><a id="properties"></a>Свойства</h2><h3>Стиль оформления базового сегмента</h3>
+<blockquote><p><em>gradient</em> - градиент заливки типа <a href="segment-gradient.ru.html">SegmentGradient</a>.<br/><em>background</em> - цвет заливки базового сегмента (применяется, если не задан градиент заливки).<br/><em>border_width</em> - толщина границ базового сегмента.<br/><em>border_color</em> - цвет границ базового сегмента. </p>
+</blockquote><p>Границы базового сегмента могут быть заданы отдельно при прямом доступе к нему через свойство <em>base_segment</em>.</p><h3>Параметры шкалы</h3>
+<blockquote><p><em>levels</em> - массив уровней отметок шкалы. Задается в виде JSON массива. Каждый уровень отметок задается в виде JSON объекта, в котором ключами являются следующие параметры:</p>
+  <blockquote><p><em>"divisions_count"</em> - количество делений.<br/><em>"mark_length"</em> - длина отметок.<br/><em>"mark_width"</em> - толщина отметок.<br/><em>"mark_color"</em> - цвет отметок. </p>
+  </blockquote><p>Например, следующий массив уровней разобьет шкалу на рисунке 2 сначала на 4 деленния отметками красного цвета длиной 8 и шириной 1.<br/>Затем каждое из этих делений будет разбито также на 4 деления отметками темно-серого цвета длиной 5 и шириной 1. </p>
+  <blockquote><p>[ </p>
+    <blockquote><p>{ 'divisions_count' : 4, 'mark_length' : 8, 'mark_width' : 1, 'mark_color' : 'rgba(255, 0, 0, 1)' },<br/>{ 'divisions_count' : 4, 'mark_length' : 5, 'mark_width' : 1, 'mark_color' : 'rgba(64, 64, 64, 1)' } </p>
+    </blockquote><p>] </p>
+  </blockquote>
+</blockquote><p><img src="../../docs/images/segment_scale.png" alt="SegmentScale" /><br/>рис. 2 - Сегментная шкала с двумя уровнями отметок. </p>
+<blockquote><p><em>mark_position</em> - позиция отметок шкалы. Допустимые значения параметра: </p>
+  <blockquote><p><em>"inner"</em> - примыкание к внутренней границе базового сегмента.<br/><em>"middle"</em> - расположение по середине базового сегмента.<br/><em>"outer"</em> - примыкание к внешней границе базового сегмента. </p>
+  </blockquote><p><em>mark_r_in</em> - внутренний радиус отметок шкалы. Игнорируется, если задан параметр <em>mark_position</em>. </p><p><em>sign_r_in</em> - внутренний радиус знаков шкалы.<br/><em>sign_font</em> - шрифт текста подписей.<br/><em>sign_text_color</em> - цвет текста подписей.<br/><em>sign_text_border_width</em> - толщина границы текста подписей.<br/><em>sign_text_border_color</em> - цвет границы текста подписей.<br/><em>sign_text_direction</em> - направление текста подписей. </p>
+</blockquote><h3>Флаги шкалы</h3>
+<blockquote><p><em>visible</em> - видимость. Значение <em>true</em> обеспечивает видимость объекта.<br/><em>marks_visible</em> - видимость отметок шкалы.<br/><em>signs_visible</em> - видимость знаков шкалы.<br/><em>in_progress</em> - в процессе. Флаг принимает значение <em>true</em> в процессе анимации.</p>
+</blockquote><h2><a id="methods"></a>Методы</h2>
+<blockquote><p><em>build()</em> - выполняет основные вычисления формы и внешнего вида базового сегмента и отметок шкалы с учетом заданных свойств и флагов.</p><p><em>draw()</em> - функция отрисовки объекта. </p><p><em>instanceCopy()</em> - создание независимой копии объекта. </p>
+</blockquote><h3>Анимация шкалы</h3><p>Анимация сегментной шкалы - это различные изменения формы, положения или стиля оформления отметок шкалы со временем.</p><p>Основные параметры анимации:</p>
+<blockquote><p><em>duration</em> - длительность анимации. Задается в секундах.<br/><em>delay</em> - задержка перед началом анимации. Задается в секундах.<br/><em>direction</em> - направление анимации. Набор допустимых значений зависит от вида анимации.<br/><em>order</em> - порядок анимации отметок шкалы. Допустимые значения: </p>
+  <blockquote><p><em>"together"</em> - вместе. <em>"one-by-one-clockwise"</em> - одна за другой по часовой стрелке.<br/><em>"one-by-one-anticlockwise"</em> - одна за другой против часовой стрелки.<br/><em>"level-by-level-clockwise"</em> - уровень за уровнем по часовой стрелке.<br/><em>"level-by-level-anticlockwise"</em> - уровень за уровнем против часовой стрелки.<br/>Для поочередной анимации длительность <em>duration</em> будет разделена равномерно между элементами массива с учетом задержки между анимацией элементов.</p>
+  </blockquote><p><em>lag</em> - задержка между анимацией элементов массива. Задается в секундах. </p>
+</blockquote><h4>Методы анимации</h4>
+<blockquote><p><em>appear(order, lag, direction, duration, delay)</em> - появление отметок шкалы за счет постепенного изменения их формы. </p>
+  <blockquote><p>Параметр <em>direction</em> может принимать значения, допустимые для аналогичного метода объекта <a href="segment-scale-mark.ru.html">SegmentScaleMark</a>.<br/>Если все отметки шкалы появились, то запускается событие <em>segment-scale-appeared</em>. </p>
+  </blockquote><p><em>disappear(order, lag, direction, duration, delay)</em> - исчезание отметок шкалы за счет постепенного изменения их формы. </p>
+  <blockquote><p>Параметр <em>direction</em> может принимать значения, допустимые для аналогичного метода объекта <a href="segment-scale-mark.ru.html">SegmentScaleMark</a>.<br/>Если все отметки шкалы исчезли, то запускается событие <em>segment-scale-disappeared</em>.</p>
+  </blockquote><p><em>fadeIn(order, lag, duration, delay)</em> - появление отметок шкалы за счет постепенного изменения их прозрачности. </p>
+  <blockquote><p>Если все отметки шкалы выцвели, то запускается событие <em>segment-scale-faded-in</em>. </p>
+  </blockquote><p><em>fadeOut(order, lag, duration, delay)</em> - исчезание отметок шкалы за счет постепенного изменения их прозрачности.</p>
+  <blockquote><p>Если все отметки шкалы выцвели, то запускается событие <em>segment-scale-faded-out</em>. </p>
+  </blockquote>
+</blockquote><h2><a id="events"></a> События</h2><p>События, запускаемые объектом SegmentScale, реализованы с помощью CustomEvent.<br/>В параметре <em>detail.scale</em> передается ссылка на сам объект.</p>
+<blockquote><p><em>segment-scale-changed</em> - сегментная шкала изменена. Изменена одна из ее отметок или базовый сегмент. </p><p><em>segment-scale-appeared</em> - все отметки шкалы появились.<br/><em>segment-scale-disappeared</em> - все отметки шкалы исчезли.<br/><em>segment-scale-faded-in</em> - все отметки шкалы появились выцветанием.<br/><em>segment-scale-faded-out</em> - все отметки шкалы исчезли выцветанием. </p>
+</blockquote>
+<hr/><p><a href="../../readme.ru.html">Главная</a> → Сегментная шкала </p>
+</body>
+</html>

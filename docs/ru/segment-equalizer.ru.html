@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>segment-equalizer.ru</title>
+<style type="text/css">/*...*/</style>
+</head>
+<body>
+<p><a href="../../readme.ru.html">Главная</a> → Круговой эквалайзер</p>
+<hr/><h1>SegmentEqualizer</h1><h2>Содержание</h2>
+<ol>
+  <li><a href="#description">Описание объекта</a></li>
+  <li><a href="#dependencies">Зависимости объекта</a></li>
+  <li><a href="#constructor">Создание объекта</a></li>
+  <li><a href="#examples">Примеры</a></li>
+  <li><a href="#properties">Свойства</a></li>
+  <li><a href="#methods">Методы</a></li>
+  <li><a href="#events">События</a></li>
+</ol><h2><a id="description"></a>Описание объекта</h2><p>Круговой эквалайзер – графический элемент для визуализации амплитуды сигнала в зависимости от частотных характеристик (рис. 1).</p><p><img src="../../docs/images/segment_equalizer.png" alt="SegmentEqualizer" /><br/>рис. 1 - Сегментный эквалайзер.</p><h2><a id="dependencies"></a>Зависимости объекта</h2><p>Для создания объекта типа SegmentEqualizer необходимо подключить следующие скрипты: </p>
+<ul>
+  <li>segment.js</li>
+  <li>segment-gradient.js</li>
+  <li>utilities.js</li>
+</ul><h2><a id="constructor"></a>Создание объекта</h2><p>Для создания массива сегментов в функцию-конструктор передаются основные параметры, которые используются для создания базового, или опорного, сегмента:</p>
+<blockquote><p><em>id</em> - идентификатор эквалайзера в виде текстовой строки.<br/><em>context</em> - контекст типа CanvasRenderingContext2D для отрисовки объекта.<br/><em>cx</em> - координата X центра базового сегмента.<br/><em>cy</em> - координата Y центра базового сегмента.<br/><em>r_in</em> - внутренний радиус базового сегмента.<br/><em>thickness</em> - толщина базового сегмента.<br/><em>init_angle</em> - начальный угол базового сегмента в градусах. Может принимать отрицательные значения. <em>angle</em> - угол базового сегмента в градусах.</p>
+</blockquote><h2><a id="examples"></a>Примеры</h2><p><a href="../../examples/round-equalizer-examples.html" target="_blank">Примеры</a> использования различных свойств и методов объекта. </p><h2><a id="properties"></a>Свойства</h2>
+<blockquote><p><em>values</em> - массив коэффициентов в диапазоне [-1; 1], определяющих форму волны.<br/>Для визуализациии формы волны коэффициенты применяется к толщине сегментов массива. </p>
+</blockquote><h3>Стиль оформления базового сегмента</h3>
+<blockquote><p><em>gradient</em> - градиент заливки типа <a href="segment-gradient.ru.html">SegmentGradient</a>.<br/><em>background</em> - цвет заливки (применяется, если не задан градиент заливки).<br/><em>border_width</em> - толщина границ.<br/><em>border_color</em> - цвет границ. </p>
+</blockquote><p>Границы базового сегмента могут быть заданы отдельно при прямом доступе к нему через свойство <em>base_segment</em>.</p><h3>Параметры элементов массива</h3>
+<blockquote><p><em>segments_count</em> - количество сегментов-элементов массива.<br/><em>segment_angle</em> - угол сегмента массива (игнорируется, если установлен флаг пропорциональности).<br/><em>segment_thickness</em> - толщина сегмента массива.<br/><em>segment_position</em> - позиция сегментов массива. Допустимые значения параметра: </p>
+  <blockquote><p><em>"inner"</em> - примыкание к внутренней границе базового сегмента.<br/><em>"middle"</em> - расположение по середине базового сегмента.<br/><em>"outer"</em> - примыкание к внешней границе базового сегмента. </p>
+  </blockquote><p><em>segment_r_in</em> - внутренний радиус сегмента массива. Игнорируется, если задано свойство <em>segment_position</em>.<br/><em>start_with</em> - начать размещение объектов на базовом сегменте массива с сегмента или с пустого пространства. Допустимые значения параметра: </p>
+  <blockquote><p><em>"segment"</em> - начать с сегмента.<br/><em>"space"</em> - начать с пустого пространства. </p>
+  </blockquote>
+</blockquote><h3>Стиль оформления элементов массива</h3>
+<blockquote><p><em>segment_gradient</em> - градиент заливки сегментов массива. Значение типа <a href="segment-gradient.ru.html">SegmentGradient</a>.<br/><em>segment_background</em> - цвет заливки сегментов массива (применяется, если не задан градиент заливки).<br/><em>segment_border_width</em> - толщина границ сегментов массива.<br/><em>segment_border_color</em> - цвет границ сегментов массива. </p>
+</blockquote><h3>Флаги массива</h3>
+<blockquote><p><em>proportional</em> - пропорциональность. Значение <em>true</em> обеспечивает одинаковые углы для элементов массива и расстояний между ними.<br/><em>full_thickness</em> - полная толщина. Значение <em>true</em> обеспечивает одинаковую толщину элемента массива и базового сегмента.<br/><em>visible</em> - видимость. Значение <em>true</em> обеспечивает видимость объекта.<br/><em>segments_visible</em> - видимость сегментов. Значение <em>true</em> обеспечивает видимость элементо вмассива.<br/><em>in_progress</em> - в процессе. Флаг принимает значение <em>true</em> в процессе анимации.</p>
+</blockquote><h2><a id="methods"></a>Методы</h2>
+<blockquote><p><em>build()</em> - выполняет основные вычисления формы и внешнего вида базового сегмента и элементов массива с учетом заданных свойств и флагов.</p><p><em>draw()</em> - функция отрисовки объекта. </p><p><em>instanceCopy()</em> - создание независимой копии объекта. </p><p><em>changeValues(values, speed, delay)</em> - функция применения новых коэффициентов <em>values</em>, определяющих форму волны, со скоростью <em>speed</em> и задержкой <em>delay</em>. </p>
+</blockquote><h2><a id="events"></a> События</h2><p>События, запускаемые объектом SegmentEqualizer, реализованы с помощью CustomEvent.<br/>В параметре <em>detail.equalizer</em> передается ссылка на сам объект.</p>
+<blockquote><p><em>segment-equalizer-changed</em> - объект изменен. Событие запускается, если изменен один из элементов массива или базовый сегмент. </p>
+</blockquote>
+<hr/><p><a href="../../readme.ru.html">Главная</a> → Круговой эквалайзер </p>
+</body>
+</html>

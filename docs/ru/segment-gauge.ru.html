@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>segment-gauge.ru</title>
+<style type="text/css">/*...*/</style>
+</head>
+<body>
+<p><a href="../../readme.ru.html">Главная</a> → Измерительный прибор</p>
+<hr/><h1>SegmentGauge</h1><h2>Содержание</h2>
+<ol>
+  <li><a href="#description">Описание объекта</a></li>
+  <li><a href="#dependencies">Зависимости объекта</a></li>
+  <li><a href="#constructor">Создание объекта</a></li>
+  <li><a href="#examples">Примеры</a></li>
+  <li><a href="#properties">Свойства</a></li>
+  <li><a href="#methods">Методы</a></li>
+  <li><a href="#events">События</a></li>
+</ol><h2><a id="description"></a>Описание объекта</h2><p>Измерительный прибор – составной графический объект, предназначенный для визуализации значений измеряемой физической величины (рис. 1).</p><p><img src="../../docs/images/segment_gauge_example.png" alt="SegmentGaugeExample" /><br/>рис. 1 - Пример измерительного прибора.</p><h2><a id="dependencies"></a>Зависимости объекта</h2><p>Для создания объекта типа SegmentGauge необходимо подключить следующие скрипты: </p>
+<ul>
+  <li>segment.js</li>
+  <li>segment-arrow.js</li>
+  <li>segment-scale-mark.js</li>
+  <li>segment-scale-sign.js</li>
+  <li>segment-scale.js</li>
+  <li>segment-gradient.js</li>
+  <li>utilities.js</li>
+</ul><h2><a id="constructor"></a>Создание объекта</h2><p>Для создания массива сегментов в функцию-конструктор передаются основные параметры, которые используются для создания базового, или опорного, сегмента:</p>
+<blockquote><p><em>id</em> - идентификатор массива сегментов в виде текстовой строки.<br/><em>context</em> - контекст типа CanvasRenderingContext2D для отрисовки сегмента.<br/><em>cx</em> - координата X центра базового сегмента.<br/><em>cy</em> - координата Y центра базового сегмента.<br/><em>r_in</em> - внутренний радиус базового сегмента.<br/><em>thickness</em> - толщина базового сегмента.<br/><em>init_angle</em> - начальный угол базового сегмента в градусах. Может принимать отрицательные значения. <em>angle</em> - угол базового сегмента в градусах.</p>
+</blockquote><h2><a id="examples"></a>Примеры</h2><p><a href="../../examples/round-gauge-examples.html" target="_blank">Примеры</a> использования различных свойств и методов объекта. </p><h2><a id="properties"></a>Свойства</h2>
+<blockquote><p><em>min_value</em> - минимальное значение шкалы прибора.<br/><em>max_value</em> - максимальное значение шкалы прибора.<br/><em>value</em> - текущее значение измеряемой величины.<br/><em>speed</em> - скорость изменения показаний прибора. Применяется при анимации стрелки. </p>
+</blockquote><p>Измерительный прибор - это составной объект. В его состав входят: </p>
+<blockquote><p><em>base_segment</em> - базовый сегмент, определяющий фон измерительного прибора.<br/><em>frame</em> - рамка, представленная объектом типа сегмент <a href="segment.ru.html">Segment</a>.<br/><em>scale</em> - круговая шкала, представленная объектом типа <a href="segment-scale.ru.html">SegmentScale</a>.<br/><em>arrow</em> - стрелка, представленная объектом типа <a href="segment-arrow.ru.html">SegmentArrow</a>. </p>
+</blockquote><h3>Стиль оформления измерительного прибора</h3>
+<blockquote><p><em>base_segment_gradient</em> - градиент заливки типа <a href="segment-gradient.ru.html">SegmentGradient</a>.<br/><em>base_segment_background</em> - цвет заливки базового сегмента (применяется, если не задан градиент заливки).<br/><em>base_segment_border_width</em> - толщина границ базового сегмента.<br/><em>base_segment_border_color</em> - цвет границ базового сегмента. </p><p>Границы базового сегмента могут быть заданы отдельно при прямом доступе к нему через свойство <em>base_segment</em>.</p><p><em>frame_gradient</em> - градиент заливки рамки.<br/><em>frame_background</em> - цвет заливки рамки.<br/><em>frame_border_width</em> - толщина границ рамки.<br/><em>frame_border_color</em> - цвет границ рамки. </p><p><em>text</em> - надпись на приборе, сообщающая, например, единицы измерения.<br/><em>text_offset_x</em> - смещение надписи по оси X относительно центра прибора.<br/><em>text_offset_y</em> - смещение надписи по оси Y относительно центра прибора. </p><p><em>font</em> - шрифт надписи.<br/><em>text_color</em> - цвет надписи.<br/><em>text_border_width</em> - толщина границ текста надписи.<br/><em>text_border_color</em> - цвет границ текста надписи. </p>
+</blockquote><h3>Флаги массива</h3>
+<blockquote><p><em>visible</em> - видимость. Значение <em>true</em> обеспечивает видимость объекта.<br/><em>in_progress</em> - в процессе. Флаг принимает значение <em>true</em> в процессе анимации.</p>
+</blockquote><h2><a id="methods"></a>Методы</h2>
+<blockquote><p><em>build()</em> - выполняет основные вычисления формы и внешнего вида измерительного прибора с учетом заданных свойств и флагов.</p><p><em>draw()</em> - функция отрисовки объекта. </p><p><em>instanceCopy()</em> - создание независимой копии объекта. </p><p><em>valueToAngle(value)</em> - функция расчета угла наклона стрелка в зависимости от значения измеряемой величины. </p><p><em>setValue(value)</em> - функция установки текущего значения измеряемой величины. </p><p><em>changeValue(value, speed, delay)</em> - анимация изменения текущего значения измеряемой величины на <em>value</em> со скоростью <em>speed</em> и задержкой <em>delay</em>. </p>
+</blockquote><h2><a id="events"></a> События</h2><p>События, запускаемые объектом SegmentGauge, реализованы с помощью CustomEvent.<br/>В параметре <em>detail.gauge</em> передается ссылка на сам объект.</p>
+<blockquote><p><em>segment-gauge-changed</em> - объект изменен. </p>
+</blockquote>
+<hr/><p><a href="../../readme.ru.html">Главная</a> → Измерительный прибор </p>
+</body>
+</html>

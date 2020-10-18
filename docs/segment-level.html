@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>segment-level</title>
+<style type="text/css">/*...*/</style>
+</head>
+<body>
+<p><a href="../readme.html">Home</a> → Segment Level</p>
+<hr/><h1>SegmentLevel</h1><h2>Contents</h2>
+<ol>
+  <li><a href="#description">Object description</a></li>
+  <li><a href="#dependencies">Object dependencies</a></li>
+  <li><a href="#constructor">Object creation</a></li>
+  <li><a href="#examples">Examples</a></li>
+  <li><a href="#properties">Properties</a></li>
+  <li><a href="#methods">Methods</a></li>
+  <li><a href="#events">Events</a></li>
+</ol><h2><a id="description"></a>Object description</h2><p>Segment Level is a set of segments combined for joint management and animation. (fig. 1).</p><p><img src="../docs/images/segment_level.png" alt="SegmentLevel" /><br/>Fig. 1 - Segment Level</p><h2><a id="dependencies"></a>Object dependencies</h2><p>The following scripts should be included in the &lt;head&gt; section: </p>
+<ul>
+  <li>segment.js</li>
+  <li>segment-gradient.js</li>
+  <li>utilities.js</li>
+</ul><h2><a id="constructor"></a>Object creation</h2><p>To create an object, the main parameters are passed to the constructor function: </p>
+<blockquote><p><em>id</em> - segment level identificator as a text string.<br/><em>context</em> - CanvasRenderingContext2D for drawing a segment level.<br/><em>cx</em> - X coordinate of the segment level reference point.<br/><em>cy</em> - Y coordinate of the segment level reference point.<br/><em>r_in</em> - conditional inner radius. Outer and inner Radii of level segments can be different. </p>
+</blockquote><h2><a id="examples"></a>Examples</h2><p><a href="../examples/segment-level-examples.html" target="_blank">Examples</a> of using various properties and methods of the object. </p><h2><a id="properties"></a>Properties</h2><h3>Segment Level Flags</h3>
+<blockquote><p><em>visible</em> - value <em>true</em> ensures object visibility.<br/><em>segments_visible</em> - value <em>true</em> ensures level segments visibility.<br/><em>in_progress</em> - flag takes the value <em>true</em> during the animation. </p>
+</blockquote><h2><a id="methods"></a>Methods</h2>
+<blockquote><p><em>addSegment(segment)</em> - adds <em>segment</em> to the list of level segments. </p><p><em>removeSegment(segment)</em> - removes <em>segment</em> from the list of level segments. </p><p><em>build</em> - used when you need to dispatch <em>segment-level-changed</em> event for level segments redrawing. </p><p><em>draw()</em> - level rendering method. Calls the .draw() method for each object from the list of level segments.</p><p><em>instanceCopy()</em> - creates an independent copy of the object.</p>
+</blockquote><h3>Segment Level Animation</h3><p>Segment level animation is various changes in the shape, position, or style of the level segments over time. </p>
+<blockquote><p><em>duration</em> - animation duration. Sets in seconds.<br/><em>delay</em> - delay before the start of the animation. Sets in seconds.<br/><em>direction</em> - animation direction. Valid values ​​depend on the type of animation.<br/><em>order</em> - animation order. Valid values: </p>
+  <blockquote><p><em>"together"</em>.<br/><em>"one-by-one-clockwise"</em>.<br/><em>"one-by-one-anticlockwise"</em>.<br/>In case of <em>one-by-one</em> order the <em>duration</em> will be divided evenly between the level elements, taking into account the <em>lag</em> between animation of level elements. </p>
+  </blockquote><p><em>lag</em> - lag between animation of level elements. Sets in seconds. </p>
+</blockquote><h4>Animation Methods</h4>
+<blockquote><p><em>appear(order, lag, direction, duration, delay)</em> - appearance of the level segments due to a gradual change in their shape. </p>
+  <blockquote><p>The <em>direction</em> parameter can take values ​​that are valid for a similar method of <a href="segment.html">Segment</a>.<br/>If all level segments appear, then the event <em>segment-level-appeared</em> dispatches. </p>
+  </blockquote><p><em>disappear(direction, duration, delay)</em> - disappearance of the level segments due to a gradual change in their shape. </p>
+  <blockquote><p>The <em>direction</em> parameter can take values ​​that are valid for a similar method of <a href="segment.html">Segment</a>.<br/>If all level segments appear, then the event <em>segment-level-disappeared</em> dispatches.</p>
+  </blockquote><p><em>rotate(order, lag, direction, angle, duration, delay)</em> - rotation of the level segments. </p>
+  <blockquote><p>The <em>angle</em> of rotation is set in degrees. </p><p>Valid values ​​for the <em>direction</em>:<br/><em>"clockwise"</em> - clockwise rotation.<br/><em>"anticlockwise"</em> - anticlockwise rotation.<br/>If all level segments rotate, then the event <em>segment-level-rotated</em> dispatches. </p>
+  </blockquote><p><em>fadeIn(order, lag, duration, delay)</em> - gradual appearance of the level segments due to a change in their transparency. </p>
+  <blockquote><p>If all level segments appear using fading, then the event <em>segment-level-faded-in</em> dispatches. </p>
+  </blockquote><p><em>fadeOut(order, lag, duration, delay)</em> - gradual disappearance of the level segments due to a change in their transparency.</p>
+  <blockquote><p>If all level segments disappear using fading, then the event <em>segment-level-faded-out</em> dispatches. </p>
+  </blockquote>
+</blockquote><h2><a id="events"></a>Events</h2><p>Events triggered by a SegmentLevel are implemented using a CustomEvent.<br/>In the <em>detail.level</em> field, a link to the object itself is passed. </p>
+<blockquote><p><em>segment-level-appeared</em><br/><em>segment-level-disappeared</em><br/><em>segment-level-rotated</em><br/><em>segment-level-faded-in</em><br/><em>segment-level-faded-out</em> </p>
+</blockquote>
+<hr/><p><a href="../readme.html">Home</a> → Segment Level </p>
+</body>
+</html>

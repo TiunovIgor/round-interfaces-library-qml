@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>segment-scale-mark.ru</title>
+<style type="text/css">/*...*/</style>
+</head>
+<body>
+<p><a href="../../readme.ru.html">Главная</a> → Отметка сегментной шкалы</p>
+<hr/><h1>SegmentScaleMark</h1><h2>Содержание</h2>
+<ol>
+  <li><a href="#description">Описание объекта</a></li>
+  <li><a href="#dependencies">Зависимости объекта</a></li>
+  <li><a href="#constructor">Создание объекта</a></li>
+  <li><a href="#properties">Свойства</a></li>
+  <li><a href="#methods">Методы</a></li>
+  <li><a href="#events">События</a></li>
+</ol><h2><a id="description"></a>Описание объекта</h2><p>Отметка сегментной шкалы – знак на шкале (черточка, риска), соответствующий некоторому измеряемому значению (рис. 1).<br/>SegmentScaleMark - вспомогательный класс библиотеки круговых интерфейсов для реализации сегментной шкалы.</p><p><img src="../../docs/images/segment_scale_mark.png" alt="SegmentScaleMark" /><br/>Рис. 1 - Отметка сегментной шкалы</p><h2><a id="dependencies"></a>Зависимости объекта</h2><p>Для создания объекта типа SegmentScaleMark необходимо подключить следующие скрипты: </p>
+<ul>
+  <li>utilities.js</li>
+</ul><h2><a id="constructor"></a>Создание объекта</h2><p>Для создания объекта в функцию-конструктор передаются основные параметры: </p>
+<blockquote><p><em>id</em> - идентификатор отметки в виде текстовой строки.<br/><em>context</em> - контекст типа CanvasRenderingContext2D для отрисовки отметки.<br/><em>cx</em> - координата X центра сегментной шкалы.<br/><em>cy</em> - координата Y центра сегментной шкалы.<br/><em>r_in</em> - внутренний радиус отметки.<br/><em>length</em> - длина отметки.<br/><em>angle</em> - угол отметки в градусах. </p>
+</blockquote><p>Внешний радиус отметки <em>r_out</em> будет рассчитан автоматически в процессе создания объекта.</p><h2><a id="properties"></a>Свойства</h2><h3>Стиль оформления отметки</h3>
+<blockquote><p><em>width</em> - толщина риски.<br/><em>color</em> - цвет риски. </p>
+</blockquote><h3>Флаги отметки</h3>
+<blockquote><p><em>visible</em> - видимость. Значение <em>true</em> обеспечивает видимость объекта.<br/><em>in_progress</em> - в процессе. Флаг принимает значение <em>true</em> в процессе анимации. </p>
+</blockquote><h2><a id="methods"></a>Методы</h2>
+<blockquote><p><em>calc()</em> - выполняет основные вычисления формы и внешнего вида отметки при ее создании, изменении параметров и в процессе анимации.<br/>Этот метод необходимо вызывать после изменения свойств объекта, чтобы они вступили в силу. </p><p><em>draw()</em> - функция отрисовки отметки. </p><p><em>instanceCopy()</em> - создание независимой копии объекта.</p>
+</blockquote><h3>Анимация отметки</h3><p>Анимация отметки - это различные изменения формы, положения или стиля оформления отметки шкалы со временем.</p><p>Основные параметры анимации:</p>
+<blockquote><p><em>duration</em> - длительность анимации. Задается в секундах.<br/><em>delay</em> - задержка перед началом анимации. Задается в секундах.<br/><em>direction</em> - направление анимации. Набор допустимых значений зависит от вида анимации. </p>
+</blockquote><h4>Методы анимации</h4>
+<blockquote><p><em>appear(direction, duration, delay)</em> - появление отметки за счет постепенного изменения формы. </p>
+  <blockquote><p>Допустимые значения параметра <em>direction</em> для метода анимации появления:<br/><em>"from-center"</em> - от центра базового сегмента шкалы.<br/><em>"to-center"</em> - к центру базового сегмента шкалы.<br/><em>"from-middle"</em> - из середины риски. </p>
+  </blockquote><p><em>disappear(direction, duration, delay)</em> - исчезание отметки за счет постепенного изменения формы. </p>
+  <blockquote><p>Допустимые значения параметра <em>direction</em> для метода анимации исчезания:<br/><em>"from-center"</em> - от центра базового сегмента шкалы.<br/><em>"to-center"</em> - к центру базового сегмента шкалы.<br/><em>"to-middle"</em> - к середине риски. </p>
+  </blockquote><p><em>fadeIn(duration, delay)</em> - постепенное появление отметки за счет изменения прозрачности. </p><p><em>fadeOut(duration, delay)</em> - постепенное исчезание отметки за счет изменения прозрачности.</p>
+</blockquote><h2><a id="events"></a> События</h2><p>События, запускаемые объектом SegmentScaleMark, реализованы с помощью CustomEvent.<br/>В поле <em>detail.mark</em> передается ссылка на сам объект. </p>
+<blockquote><p><em>segment-scale-mark-changed</em> - отметка сегментной шкалы изменена. Событие запускается каждый раз, когда выполняется метод calc(). </p><p><em>segment-scale-mark-appeared</em> - отметка появилась.<br/><em>segment-scale-mark-disappeared</em> - отметка исчезла.<br/><em>segment-scale-mark-faded-in</em> - отметка появилась методом выцветания.<br/><em>segment-scale-mark-faded-out</em> - отметка исчезла методом выцветания. </p>
+</blockquote>
+<hr/><p><a href="../../readme.ru.html">Главная</a> → Отметка сегментной шкалы </p>
+</body>
+</html>

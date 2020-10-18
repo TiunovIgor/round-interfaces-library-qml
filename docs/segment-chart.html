@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>segment-chart</title>
+<style type="text/css">/*...*/</style>
+</head>
+<body>
+<p><a href="../readme.html">Home</a> → Segment Chart </p>
+<hr/><h1>SegmentChart</h1><h2>Contents</h2>
+<ol>
+  <li><a href="#description">Object description</a></li>
+  <li><a href="#dependencies">Object dependencies</a></li>
+  <li><a href="#constructor">Object creation</a></li>
+  <li><a href="#examples">Examples</a></li>
+  <li><a href="#properties">Properties</a></li>
+  <li><a href="#methods">Methods</a></li>
+  <li><a href="#events">Events</a></li>
+</ol><h2><a id="description"></a>Object description</h2><p>A segment chart is a graphical representation of data using segments that allows to quickly assess the relationship of several quantities (Fig. 1). </p><p><img src="../docs/images/segment_pie_chart.png" alt="SegmentPieChart" /> <img src="../docs/images/segment_radial_chart.png" alt="SegmentRaialChart" /> <img src="../docs/images/segment_bar_chart.png" alt="SegmentBarChart" /><br/>Fig. 1 - Round charts of types "pie", "radial", "bar" from left to right. </p><h2><a id="dependencies"></a>Object dependencies</h2><p>The following scripts should be included in the &lt;head&gt; section: </p>
+<ul>
+  <li>segment.js</li>
+  <li>segmment-scale-sign.js</li>
+  <li>segment-gradient.js</li>
+  <li>utilities.js</li>
+</ul><h2><a id="constructor"></a>Object creation</h2><p>To create an object, the main parameters are passed to the constructor function. These parameters are used to create the base segment: </p>
+<blockquote><p><em>id</em> - chart identificator as a text string.<br/><em>context</em> - CanvasRenderingContext2D for drawing the chart.<br/><em>cx</em> - X coordinate of the base segment center.<br/><em>cy</em> - Y coordinate of the base segment center.<br/><em>r_in</em> - base segment inner radius.<br/><em>thickness</em> - thickness of the base segment.<br/><em>init_angle</em> - the initial angle of the base segment in degrees. May take negative values.<br/><em>angle</em> - angle of the base segment in degrees. </p>
+</blockquote><h2><a id="examples"></a>Examples</h2><p><a href="../examples/round-chart-examples.html" target="_blank">Examples</a> of using various properties and methods of the object. </p><h2><a id="properties"></a>Properties</h2>
+<blockquote><p><em>type</em> - chart type. Valid values: </p>
+  <blockquote><p><em>"pie"</em>.<br/><em>"radial"</em>.<br/><em>"bar"</em>. </p>
+  </blockquote><p><em>source</em> - source of chart data. The data source is specified as an array, the objects of which are data arrays: </p>
+  <blockquote><p>[name, value, color]. </p>
+  </blockquote><p><em>data</em> - an array of values ​​retrieved from the data source. </p><p><em>min_value</em> - minimum value of a data series.<br/><em>max_value</em> - maximum value of a data series.<br/><em>total</em> - total value of a data series. </p><p><em>sign_r_in</em> - chart signs inner radius.<br/><em>sign_r_offset</em> - radial offset of the signs.<br/><em>font</em>.<br/><em>text_color</em>.<br/><em>text_border_width</em>.<br/><em>text_border_color</em>.<br/><em>text_direction</em>. Valid values: </p>
+  <blockquote><p><em>"vertical"</em>.<br/><em>"clockwise"</em>.<br/><em>"anticlockwise"</em>.<br/><em>"from-center"</em>.<br/><em>"to-center"</em>. </p>
+  </blockquote>
+</blockquote><h3>Стиль оформления базового сегмента</h3>
+<blockquote><p><em>gradient</em> - fill gradient. Type of value is <a href="segment-gradient.html">SegmentGradient</a>.<br/><em>background</em> - fill color (applies if fill gradient is not specified).<br/><em>border_width</em> - base segment border width.<br/><em>border_color</em> - base segment border color.</p><p>The borders of the base segment can be set separately using direct access to it through the <em>base_segment</em> property. </p>
+</blockquote><h3>Параметры элементов массива</h3>
+<blockquote><p><em>segments_count</em> - the number of segments-elements of the array.<br/><em>segment_angle</em> - array segment angle (ignored if <em>proportional</em> flag is set in <em>true</em>).<br/><em>segment_thickness</em> - array segment thickness.<br/><em>segment_position</em> - array segments position. Valid values: </p>
+  <blockquote><p><em>"inner"</em> - adjoining the inner border of the base segment.<br/><em>"middle"</em> - location in the middle of the base segment.<br/><em>"outer"</em> - adjoining the outer border of the base segment. </p>
+  </blockquote><p><em>segment_r_in</em> - array segment inner radius. Ignored if property <em>segment_position</em> is set.<br/><em>start_with</em> - start placing objects on the base segment with segment or with empty space. Valid values: </p>
+  <blockquote><p><em>"segment"</em> - start with segment.<br/><em>"space"</em> - start with empty space. </p>
+  </blockquote><p><em>space_angle</em> - angle of space between segments.<br/><em>space_thickness</em> - thickness of space between segments. </p>
+</blockquote><h3>Array Segments Style</h3>
+<blockquote><p><em>segment_gradient</em> - array segments fill gradient. Type of value is <a href="segment-gradient.html">SegmentGradient</a>.<br/><em>segment_background</em> - array segments fill color (applies if fill gradient is not specified).<br/><em>segment_border_width</em> - array segments border width.<br/><em>segment_border_color</em> - array segments border color. </p>
+</blockquote><h3>Object Flags</h3>
+<blockquote><p><em>proportional</em> - value <em>true</em> provides the same angles for array segments and the distance between them.<br/><em>full_thickness</em> - value <em>true</em> provides the same thickness of array segments.<br/><em>visible</em> - value <em>true</em> ensures object visibility.<br/><em>segments_visible</em> - value <em>true</em> ensures segments visibility.<br/><em>signs_visible</em> - value <em>true</em> ensures signs visibility.<br/><em>in_progress</em> - flag takes the value <em>true</em> during the animation. </p>
+</blockquote><h2><a id="methods"></a>Methods</h2>
+<blockquote><p><em>build()</em> - performs basic calculations of the shape and style of the base segment and array elements, taking into account the specified properties and flags. </p><p><em>draw()</em> - draws an object. </p><p><em>instanceCopy()</em> - creates an independent copy of the object. </p>
+</blockquote><h2><a id="events"></a>Events</h2><p>Events triggered by a SegmentChart are implemented using a CustomEvent.<br/>In the <em>detail.chart</em> field, a link to the object itself is passed. </p>
+<blockquote><p><em>segment-chart-changed</em></p><p><em>segment-chart-appeared</em><br/><em>segment-chart-disappeared</em><br/><em>segment-chart-faded-in</em><br/><em>segment-chart-faded-out</em> </p>
+</blockquote>
+<hr/><p><a href="../readme.html">Home</a> → Segment Chart </p>
+</body>
+</html>

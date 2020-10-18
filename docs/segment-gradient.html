@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>segment-gradient</title>
+<style type="text/css">/*...*/</style>
+</head>
+<body>
+<p><a href="../readme.html">Home</a> → Segment Gradient</p>
+<hr/><h1>SegmentGradient</h1><h2>Contents</h2>
+<ol>
+  <li><a href="#description">Object description</a></li>
+  <li><a href="#dependencies">Object dependencies</a></li>
+  <li><a href="#constructor">Object creation</a></li>
+</ol><h2><a id="description"></a>Object description</h2><p>Segment Gradient is a custom gradient for filling elements of round interfaces. </p><h2><a id="dependencies"></a>Object dependencies</h2><p>The following scripts should be included in the &lt;head&gt; section: </p>
+<ul>
+  <li>utilities.js</li>
+</ul><h2><a id="constructor"></a>Object creation</h2><p>To create an object, the main parameters are passed to the constructor function: </p>
+<blockquote><p><em>type</em> - gradient type. Valid values: </p>
+  <blockquote><p><em>"linear"</em> - linear gradient.<br/><em>"radial"</em> - radial gradient.<br/><em>"conic"</em> - conic gradient. </p>
+  </blockquote><p><em>direction</em> - gradient direction. Valid values ​​depend on the type of gradient and the type of fill object. </p><p><em>stops_string</em> - line specifying the position of each color through stop points.<br/>The color can be specified as a keyword, in HEX (RGB) format, in RGB or RGBA format.<br/>Stop point is set as a percentage.<br/>Color and stop point separates by a space.<br/>Color-Point pairs in the string separates by commas. </p>
+</blockquote><p>An example of a radial custom gradient emanating from the center of a segment (Fig. 1): </p>
+<blockquote><p>SegmentGradient('radial', 'from-center', '#06ff1a 45%, #00b050 76%, #034400 98%') </p>
+</blockquote><p><img src="../docs/images/segment_gradient.png" alt="SegmentGradient" /><br/>Fig. 1 - Segment Gradient</p>
+<hr/><p><a href="../readme.html">Home</a> → Segment Gradient </p>
+</body>
+</html>

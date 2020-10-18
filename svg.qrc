@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/svg"/>
+    <qresource prefix="/">
+        <file>svg/arrow-one.svg</file>
+        <file>svg/arrow-two.svg</file>
+        <file>svg/pause-button.svg</file>
+        <file>svg/play-button.svg</file>
+    </qresource>
+</RCC>

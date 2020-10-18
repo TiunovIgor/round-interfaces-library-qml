@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>segment</title>
+<style type="text/css">/*...*/</style>
+</head>
+<body>
+<p><a href="../readme.html">Home</a> → Segment </p>
+<hr/><h1>Segment</h1><h2>Contents</h2>
+<ol>
+  <li><a href="#description">Object description</a></li>
+  <li><a href="#dependencies">Object dependencies</a></li>
+  <li><a href="#constructor">Object creation</a></li>
+  <li><a href="#examples">Examples</a></li>
+  <li><a href="#properties">Properties</a></li>
+  <li><a href="#methods">Methods</a></li>
+  <li><a href="#events">Events</a></li>
+</ol><h2><a id="description"></a>Object description</h2><p>Segment of ring is part of a circle bounded by two circles of different radii with a common center and two rays emerging from this center (Fig. 1).<br/><img src="../docs/images/segment_geometry.png" alt="SegmentGeometry" /><br/>Fig. 1 - Ring Segment Geometry</p><p>C - segment center - this is the center of the bounding circles and the beginning of the bounding rays.<br/>R1 - radius of the smaller circle.<br/>R2 - radius of the larger circle.<br/>CA - ray, bounding the ring segment and determining its beginning.<br/>CB - ray, bounding the ring segment and determining its ending.<br/>T - thickness of the segment equal to the difference between R2 and R1.<br/>α - initial angle of the segment - this is the angle between the horizontal axis X and the ray CA.<br/>β - angle of the segment - this is the angle between the rays CA and CB. </p><h2><a id="dependencies"></a>Object dependencies</h2><p>The following scripts should be included in the &lt;head&gt; section: </p>
+<ul>
+  <li>segment-gradient.js</li>
+  <li>utilities.js</li>
+</ul><h2><a id="constructor"></a>Object creation</h2><p>To create an object, the main parameters are passed to the constructor function: </p>
+<blockquote><p><em>id</em> - segment identificator as a text string.<br/><em>context</em> - CanvasRenderingContext2D for drawing the segment.<br/><em>cx</em> - X coordinate of the segment center.<br/><em>cy</em> - Y coordinate of the segment center.<br/><em>r_in</em> - segment inner radius.<br/><em>thickness</em> - thickness of the segment.<br/><em>init_angle</em> - the initial angle of the segment in degrees. May take negative values.<br/><em>angle</em> - angle of the segment in degrees. </p>
+</blockquote><p>The outer radius of the segment <em>r_out</em> will be calculated automatically during the creation of the object. </p><p>The object will take the form of a ring if you set the <em>angle</em> of the segment to a multiple of 360 degrees.<br/>The object will take the form of a circle segment if the inner radius <em>r_in</em> is set to 0.<br/>The object will take the form of a circle if both of these conditions are met. </p><h2><a id="examples"></a>Examples</h2><p><a href="../examples/segment-examples.html" target="_blank">Examples</a> of using various properties and methods of the object. </p><h2><a id="properties"></a>Properties</h2><h3>Segment Style</h3>
+<blockquote><p><em>gradient</em> - fill gradient. Type of value is <a href="segment-gradient.html">SegmentGradient</a>. </p><p>Valid <em>direction</em> values for a Linear Gradient: </p>
+  <blockquote><p><em>"from-center"</em> - from segment center.<br/><em>"to-center"</em> - to segment center.<br/><em>"from-opening"</em> - from the opening border to the closing border along the chord of larger circle.<br/><em>"from-closing"</em> - from the closing border to the opening border along the chord of larger circle. </p>
+  </blockquote><p>Valid <em>direction</em> values for a Radial Gradient: </p>
+  <blockquote><p><em>"from-center"</em> - from segment center.<br/><em>"to-center"</em> - to segment center. </p>
+  </blockquote><p>Valid <em>direction</em> values for a Conic Gradient: </p>
+  <blockquote><p><em>"clockwise"</em>.<br/><em>"anticlockwise"</em>. </p>
+  </blockquote><p><em>background</em> - fill color (applies if fill gradient is not specified).<br/><em>border_width</em> - segment border width.<br/><em>border_color</em> - segment border color.</p>
+</blockquote><p>Segment borders can be set separately. </p><p>Types of segment borders (Fig. 2)</p><p>A) Opening Border – first border when clockwise movement. </p>
+<blockquote><p><em>border_opening_width</em> - width of the opening border.<br/><em>border_opening_color</em> - color of the opening border. </p>
+</blockquote><p>B) Outer Border – segment arc with larger radius. </p>
+<blockquote><p><em>border_outer_width</em> - width of the outer border.<br/><em>border_outer_color</em> - color of the outer border. </p>
+</blockquote><p>C) Inner Border – segment arc with smaller radius. </p>
+<blockquote><p><em>border_inner_width</em> - width of the inner border.<br/><em>border_inner_color</em> - color of the inner border. </p>
+</blockquote><p>D) Closing Border – extreme border when clockwise movement. </p>
+<blockquote><p><em>border_closing_width</em> - width of the closing border.<br/><em>border_closing_color</em> - color of the closing border. </p>
+</blockquote><p><img src="../docs/images/segment_borders.png" alt="SegmentGeometry" /><br/>Рис. 2 - Ring Segment Borders </p><p>If a separate segment border width and/or color is specified, then the specified style will be used to draw it.<br/>If a separate border is not specified, then the general style of segment border will be used to draw it. </p><h3>Object Flags</h3>
+<blockquote><p><em>visible</em> - flag ensures the visibility of the object if set in <em>true</em>.<br/><em>in_progress</em> - flag takes the value <em>true</em> during the animation. </p>
+</blockquote><h2><a id="methods"></a>Methods</h2>
+<blockquote><p><em>calc()</em> - performs basic calculations of the shape and style of a segment when it is created, changed and during animation.<br/>This method should be called after changing the properties of the object so that they take effect. </p><p><em>calcBorder()</em> - computes segment borders styles. Called automatically from <em>calc()</em> method. </p><p><em>draw()</em> - draws an object. </p><p><em>instanceCopy()</em> - creates an independent copy of the object. </p><p><em>isPointInside(x, y)</em> - function for checking whether a point with coordinates (x,y) belongs to a figure. </p>
+</blockquote><h3>Segment Animation</h3><p>Segment animation is various changes in the shape, position, or style of the segment over time. </p><p>Key animation parameters: </p>
+<blockquote><p><em>duration</em> - animation duration. Sets in seconds.<br/><em>delay</em> - delay before the start of the animation. Sets in seconds.<br/><em>direction</em> - animation direction. Valid values ​​depend on the type of animation. </p>
+</blockquote><h4>Animation Methods</h4>
+<blockquote><p><em>appear(direction, duration, delay)</em> - the appearance of a segment due to a gradual change in its shape. </p><p>Valid values ​​for the <em>direction</em>: </p>
+  <blockquote><p><em>"from-center"</em> - from segment center.<br/><em>"to-center"</em> - to segment center.<br/><em>"from-axis"</em> - from segment axis.<br/><em>"clockwise"</em> - clockwise from the opening border.<br/><em>"anticlockwise"</em> - anticlockwise from the closing border. </p>
+  </blockquote><p><em>disappear(direction, duration, delay)</em> - the disappearance of a segment due to a gradual change in its shape. </p><p>Valid values ​​for the <em>direction</em>: </p>
+  <blockquote><p><em>"from-center"</em> - from segment center.<br/><em>"from-outside"</em> - to segment center.<br/><em>"to-axis"</em> - to segment axis.<br/><em>"clockwise"</em> - clockwise to the closing border.<br/><em>"anticlockwise"</em> - anticlockwise to the opening border. </p>
+  </blockquote><p><em>rotate(direction, angle, duration, delay)</em> - rotation of the segment by <em>angle</em> for <em>duration</em> seconds. </p><p>The <em>angle</em> of rotation is set in degrees. </p><p>Valid values ​​for the <em>direction</em>: </p>
+  <blockquote><p><em>"clockwise"</em> - clockwise rotation.<br/><em>"anticlockwise"</em> - anticlockwise rotation. </p>
+  </blockquote><p><em>fadeIn(duration, delay)</em> - gradual appearance of a segment due to a change in its transparency. </p><p><em>fadeOut(duration, delay)</em> - gradual disappearance of a segment due to a change in its transparency. </p>
+</blockquote><h2><a id="events"></a>Events</h2><p>Events triggered by a Segment are implemented using a CustomEvent.<br/>In the <em>detail.segment</em> field, a link to the object itself is passed. </p>
+<blockquote><p><em>segment-changed</em> - event dispatches every time the <em>calc()</em> method is executed. </p><p><em>segment-appeared</em><br/><em>segment-disappeared</em><br/><em>segment-rotated</em><br/><em>segment-faded-in</em><br/><em>segment-faded-out</em> </p>
+</blockquote>
+<hr/><p><a href="../readme.html">Home</a> → Segment </p>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>segment-grid.ru</title>
+<style type="text/css">/*...*/</style>
+</head>
+<body>
+<p><a href="../../readme.ru.html">Главная</a> → Сегментная сетка </p>
+<hr/><h1>SegmentGrid</h1><h2>Содержание</h2>
+<ol>
+  <li><a href="#description">Описание объекта</a></li>
+  <li><a href="#dependencies">Зависимости объекта</a></li>
+  <li><a href="#constructor">Создание объекта</a></li>
+  <li><a href="#examples">Примеры</a></li>
+  <li><a href="#properties">Свойства</a></li>
+  <li><a href="#methods">Методы</a></li>
+  <li><a href="#events">События</a></li>
+</ol><h2><a id="description"></a>Описание объекта</h2><p>Сегментная сетка – сетка, составленная из концентрических дуг, отстоящих друг от друга на одинаковом расстояниии, и отрезков лучей, исходящих из центра сегмента (рис. 1).</p><p><img src="../../docs/images/segment_grid_geometry.png" alt="SegmentGridGeometry" /><br/>Рис. 1 - Геометрия сегментной сетки</p><p>C - центр базового сегмента.<br/>R1 - радиус меньшей окружности базового сегмента.<br/>R2 - радиус большей окружности базового сегмента.<br/>CA - луч, ограничивающий базовый сегмент и определяющий его начало.<br/>CB - луч, ограничивающий базовый сегмент и определяющий его конец.<br/>T - толщина базового сегмента, равная разнице между R2 и R1.<br/>α - начальный угол базового сегмента - это угол между горизонтальной осью X и лучом CA.<br/>β - угол базового сегмент - это угол между лучами CA и CB. </p><h2><a id="dependencies"></a>Зависимости объекта</h2><p>Объект SegmentGrid наследуется от объекта Segment.<br/>Для создания объекта типа SegmentGrid необходимо подключить следующие скрипты: </p>
+<ul>
+  <li>segment.js</li>
+  <li>segment-gradient.js</li>
+  <li>utilitites.js</li>
+</ul><h2><a id="constructor"></a>Создание объекта</h2><p>Для создания объекта в функцию-конструктор передаются основные параметры: </p>
+<blockquote><p><em>id</em> - идентификатор сегмента в виде текстовой строки.<br/><em>context</em> - контекст типа CanvasRenderingContext2D для отрисовки сегмента.<br/><em>cx</em> - координата X центра сегмента.<br/><em>cy</em> - координата Y центра сегмента.<br/><em>r_in</em> - внутренний радиус сегмента.<br/><em>thickness</em> - толщина сегмента.<br/><em>init_angle</em> - начальный угол сегмента в градусах. Может принимать отрицательные значения. <em>angle</em> - угол сегмента в градусах.</p>
+</blockquote><p>Внешний радиус сегмента <em>r_out</em> будет рассчитан автоматически в процессе создания объекта.</p><h2><a id="examples"></a>Примеры</h2><p><a href="../../examples/round-radar-examples.html" target="_blank">Примеры</a> использования различных свойств и методов объекта. </p><h2><a id="properties"></a>Свойства</h2><p>Объект SegmentGrid наследует свойства объекта Segment и обладает собственнными свойствами: </p>
+<blockquote><p><em>circles_count</em> - количество концентрических дуг в сетке.<br/><em>circle_pitch</em> - шаг дуг сетки (расчитывается автоматически).<br/><em>circle_width</em> - толщина дуг сетки.<br/><em>circle_color</em> - цвет дуг сетки. </p><p><em>beams_count</em> - количество лучей в сетке.<br/><em>beam_pitch</em> - шаг лучей сетки (расчитывается автоматические в градусах).<br/><em>beam_width</em> - толщина лучей сетки.<br/><em>beam_color</em> - цвет лучей сетки. </p>
+</blockquote><h3>Флаги сетки</h3>
+<blockquote><p><em>visible</em> - видимость. Значение <em>true</em> обеспечивает видимость объекта.<br/><em>circles_visible</em> - видимость концентрических дуг сетки.<br/><em>beams_visible</em> - видимость лучей сетки.<br/><em>in_progress</em> - в процессе. Флаг принимает значение <em>true</em> в процессе анимации. </p>
+</blockquote><h2><a id="methods"></a>Методы</h2><p>Объект SegmentGrid наследует методы объекта Segment. </p><h2><a id="events"></a> События</h2><p>Объект SegmentGrid наследует события объекта Segment. </p>
+<hr/><p><a href="../../readme.ru.html">Главная</a> → Сегментная сетка </p>
+</body>
+</html>

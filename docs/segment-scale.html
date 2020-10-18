@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>segment-scale</title>
+<style type="text/css">/*...*/</style>
+</head>
+<body>
+<p><a href="../readme.html">Home</a> → Segment Scale </p>
+<hr/><h1>SegmentScale</h1><h2>Contents</h2>
+<ol>
+  <li><a href="#description">Object description</a></li>
+  <li><a href="#dependencies">Object dependencies</a></li>
+  <li><a href="#constructor">Object creation</a></li>
+  <li><a href="#examples">Examples</a></li>
+  <li><a href="#properties">Properties</a></li>
+  <li><a href="#methods">Methods</a></li>
+  <li><a href="#events">Events</a></li>
+</ol><h2><a id="description"></a>Object description</h2><p>Segment Scale is an a round measuring scale (Fig. 1). </p><p><img src="../docs/images/segment_scale_geometry.png" alt="SegmentScaleGeometry" /><br/>Fig. 1 - Segment Scale Geometry. </p><h2><a id="dependencies"></a>Object dependencies</h2><p>The following scripts should be included in the &lt;head&gt; section: </p>
+<ul>
+  <li>segment.js</li>
+  <li>segment-scale-mark.js</li>
+  <li>segment-scale-sign.js</li>
+  <li>segment-gradient.js</li>
+  <li>utilities.js</li>
+</ul><h2><a id="constructor"></a>Object creation</h2><p>To create an object, the main parameters are passed to the constructor function. These parameters are used to create the base segment: </p>
+<blockquote><p><em>id</em> - segment scale identificator as a text string.<br/><em>context</em> - CanvasRenderingContext2D for drawing a segment scale.<br/><em>cx</em> - X coordinate of the base segment center.<br/><em>cy</em> - Y coordinate of the base segment center.<br/><em>r_in</em> - base segment inner radius.<br/><em>thickness</em> - thickness of the base segment.<br/><em>init_angle</em> - the initial angle of the base segment in degrees. May take negative values. <em>angle</em> - angle of the base segment in degrees. </p>
+</blockquote><h2><a id="examples"></a>Examples</h2><p><a href="../examples/segment-scale-examples.html" target="_blank">Examples</a> of using various properties and methods of the object. </p><h2><a id="properties"></a>Properties</h2><h3>Base Segment Style</h3>
+<blockquote><p><em>gradient</em> - base segment fill gradient. Type of value is <a href="segment-gradient.html">SegmentGradient</a>.<br/><em>background</em> - base segment fill color (applies if fill gradient is not specified).<br/><em>border_width</em> - base segment border width.<br/><em>border_color</em> - base segment border color. </p>
+</blockquote><p>The borders of the base segment can be set separately using direct access to the base segment through the <em>base_segment</em> property. </p><h3>Scale Parameters</h3>
+<blockquote><p><em>levels</em> - an array of levels of scale marks. Sets as a JSON array.<br/>Each level of marks is set as a JSON object, in which the keys are the following parameters: </p>
+  <blockquote><p><em>"divisions_count"</em> - count of divisions.<br/><em>"mark_length"</em> - length of marks.<br/><em>"mark_width"</em> - width of marks.<br/><em>"mark_color"</em> - color of marks. </p>
+  </blockquote><p>For example, the following array of levels will break the scale in Figure 2.<br/>First, the scale breaks into 4 divisions by red marks with a length of 8 and a width of 1.<br/>Then each of these divisions will also be divided into 4 divisions by marks of dark gray color with a length of 5 and a width of 1. </p>
+  <blockquote><p>[ </p>
+    <blockquote><p>{ 'divisions_count' : 4, 'mark_length' : 8, 'mark_width' : 1, 'mark_color' : 'rgba(255, 0, 0, 1)' },<br/>{ 'divisions_count' : 4, 'mark_length' : 5, 'mark_width' : 1, 'mark_color' : 'rgba(64, 64, 64, 1)' } </p>
+    </blockquote><p>] </p>
+  </blockquote>
+</blockquote><p><img src="../docs/images/segment_scale.png" alt="SegmentScale" /><br/>Fig. 2 - Segment Scale with two levels of marks. </p>
+<blockquote><p><em>mark_position</em> - position of scale marks. Valid values: </p>
+  <blockquote><p><em>"inner"</em> - adjoining the inner border of the base segment.<br/><em>"middle"</em> - location in the middle of the base segment.<br/><em>"outer"</em> - adjoining the outer border of the base segment. </p>
+  </blockquote><p><em>mark_r_in</em> - scale marks inner radius. Ignored if property <em>mark_position</em> is set. </p><p><em>sign_r_in</em> - inner radius of scale signs.<br/><em>sign_font</em> - font of the sign text.<br/><em>sign_text_color</em> - color of the sign text.<br/><em>sign_text_border_width</em> - border width of the sign text.<br/><em>sign_text_border_color</em> - border color of the sign text.<br/><em>sign_text_direction</em> - direction of the sign text. </p>
+</blockquote><h3>Segment Scale Flags</h3>
+<blockquote><p><em>visible</em> - value <em>true</em> ensures object visibility.<br/><em>marks_visible</em> - value <em>true</em> ensures scale marks visibility.<br/><em>signs_visible</em> - value <em>true</em> ensures scale signs visibility.<br/><em>in_progress</em> - flag takes the value <em>true</em> during the animation. </p>
+</blockquote><h2><a id="methods"></a>Methods</h2>
+<blockquote><p><em>build()</em> - performs basic calculations of the shape and style of the base segment and scale marks, taking into account the specified properties and flags. </p><p><em>draw()</em> - draws an object. </p><p><em>instanceCopy()</em> - creates an independent copy of the object. </p>
+</blockquote><h3>Segment Scale Animation</h3><p>Segment Scale animation is various changes in the shape, position, or style of the scale marks over time. </p><p>Key animation parameters: </p>
+<blockquote><p><em>duration</em> - animation duration. Sets in seconds.<br/><em>delay</em> - delay before the start of the animation. Sets in seconds.<br/><em>direction</em> - animation direction. Valid values ​​depend on the type of animation.<br/><em>order</em> - animation order. Valid values: </p>
+  <blockquote><p><em>"together"</em><br/><em>"one-by-one-clockwise"</em><br/><em>"one-by-one-anticlockwise"</em><br/><em>"level-by-level-clockwise"</em><br/><em>"level-by-level-anticlockwise"</em><br/>In case of <em>one-by-one</em> order the <em>duration</em> will be divided evenly between the array elements, taking into account the <em>lag</em> between animation of array elements. </p>
+  </blockquote><p><em>lag</em> - lag between animation of array elements. Sets in seconds. </p>
+</blockquote><h4>Animation Methods</h4>
+<blockquote><p><em>appear(order, lag, direction, duration, delay)</em> - appearance of the scale marks due to a gradual change in their shape. </p>
+  <blockquote><p>The <em>direction</em> parameter can take values ​​that are valid for a similar method of <a href="segment-scale-mark.html">SegmentScaleMark</a>.<br/>If all scale marks appear, then the event <em>segment-scale-appeared</em> dispatches. </p>
+  </blockquote><p><em>disappear(direction, duration, delay)</em> - disappearance of the scale marks due to a gradual change in their shape. </p>
+  <blockquote><p>The <em>direction</em> parameter can take values ​​that are valid for a similar method of <a href="segment-scale-mark.html">SegmentScaleMark</a>.<br/>If all scale marks appear, then the event <em>segment-scale-disappeared</em> dispatches.</p>
+  </blockquote><p><em>fadeIn(order, lag, duration, delay)</em> - gradual appearance of the scale marks due to a change in their transparency. </p>
+  <blockquote><p>If all scale marks appear using fading, then the event <em>segment-scale-faded-in</em> dispatches. </p>
+  </blockquote><p><em>fadeOut(order, lag, duration, delay)</em> - gradual disappearance of the scale marks due to a change in their transparency.</p>
+  <blockquote><p>If all scale marks disappear using fading, then the event <em>segment-scale-faded-out</em> dispatches. </p>
+  </blockquote>
+</blockquote><h2><a id="events"></a>Events</h2><p>Events triggered by a SegmentScale are implemented using a CustomEvent.<br/>In the <em>detail.scale</em> field, a link to the object itself is passed. </p>
+<blockquote><p><em>segment-scale-changed</em> - event dispatches if one of the scale marks or the base segment is changed. </p><p><em>segment-scale-appeared</em><br/><em>segment-scale-disappeared</em><br/><em>segment-scale-faded-in</em><br/><em>segment-scale-faded-out</em> </p>
+</blockquote>
+<hr/><p><a href="../readme.html">Home</a> → Segment Scale </p>
+</body>
+</html>

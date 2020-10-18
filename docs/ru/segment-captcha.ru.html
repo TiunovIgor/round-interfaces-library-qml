@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>segment-captcha.ru</title>
+<style type="text/css">/*...*/</style>
+</head>
+<body>
+<p><a href="../../readme.ru.html">Главная</a> → Круговой тест CAPTCHA</p>
+<hr/><h1>SegmentCaptcha</h1><h2>Содержание</h2>
+<ol>
+  <li><a href="#description">Описание объекта</a></li>
+  <li><a href="#dependencies">Зависимости объекта</a></li>
+  <li><a href="#constructor">Создание объекта</a></li>
+  <li><a href="#examples">Примеры</a></li>
+  <li><a href="#properties">Свойства</a></li>
+  <li><a href="#methods">Методы</a></li>
+  <li><a href="#events">События</a></li>
+</ol><h2><a id="description"></a>Описание объекта</h2><p>Круговой тест CAPTCHA – компьютерный тест, в котором пользователь должен совместить места разрывов концетрических колец.<br/>Так как данная задача является нетривиальной для компьютера, решив ее пользователь доказывает, что является человеком, а не компьютером (рис. 1). </p><p><img src="../../docs/images/segment_captcha_geometry.png" alt="SegmentCaptchaGeometry" /><br/>рис. 1 - Вид кругового теста CAPTCHA. </p><p>Одно из колец, базовое, является статическим и не может быть повернуто с помощью мыши. Для этого кольца следует задать стиль, отличный от других колец.<br/>Для решения задачи пользователь должен совместить разрывы остальных колец с разрывом базового кольца.<br/>Захват кольца осуществляется щелчком и удержанием левой кнопки мыши.<br/>Вращение кольца осуществляется перемещением курсора мыши. </p><h2><a id="dependencies"></a>Зависимости объекта</h2><p>Для создания объекта типа SegmentCaptcha необходимо подключить следующие скрипты: </p>
+<ul>
+  <li>segment.js</li>
+  <li>segment-gradient.js</li>
+  <li>utilities.js</li>
+</ul><h2><a id="constructor"></a>Создание объекта</h2><p>Для создания объекта в функцию-конструктор передаются основные параметы:</p>
+<blockquote><p><em>id</em> - идентификатор объекта в виде текстовой строки.<br/><em>context</em> - контекст типа CanvasRenderingContext2D для отрисовки сегментов.<br/><em>cx</em> - координата X центра базового сегмента.<br/><em>cy</em> - координата Y центра базового сегмента.<br/><em>r_in</em> - внутренний радиус объекта.<br/><em>thickness</em> - толщина объекта. </p>
+</blockquote><h2><a id="examples"></a>Примеры</h2><p><a href="../../examples/round-captcha-examples.html" target="_blank">Примеры</a> использования различных свойств и методов объекта. </p><h2><a id="properties"></a>Свойства</h2>
+<blockquote><p><em>space_thickness</em> - толщина промежутков между кольцами.<br/><em>precision</em> - точность совмещения колец в градусах. </p>
+</blockquote><h3>Стиль оформления базового кольца</h3>
+<blockquote><p><em>base_segment_gradient</em> - градиент заливки типа <a href="segment-gradient.ru.html">SegmentGradient</a>.<br/><em>base_segment_background</em> - цвет заливки базового сегмента (применяется, если не задан градиент заливки).<br/><em>base_segment_border_width</em> - толщина границ базового сегмента.<br/><em>base_segment_border_color</em> - цвет границ базового сегмента.<br/><em>base_segment_position</em> - позиция базового сегмента. </p>
+  <blockquote><p>Допустимые значения дла параметра "base_segment_position":<br/><em>"inner"</em> - базовым является внутреннее кольцо.<br/><em>"outer"</em> - базовым является внешнее кольцо. </p>
+  </blockquote>
+</blockquote><p>Границы базового сегмента могут быть заданы отдельно при прямом доступе к нему через свойство <em>base_segment</em>. </p><h3>Параметры свободных колец</h3>
+<blockquote><p><em>segments_count</em> - общее количество колец.<br/><em>segment_break</em> - разрыв кольца в градусах. </p>
+</blockquote><h3>Стиль оформления свободных колец</h3>
+<blockquote><p><em>segment_gradient</em> - градиент заливки колец. Значение типа <a href="segment-gradient.ru.html">SegmentGradient</a>.<br/><em>segment_background</em> - цвет заливки колец (применяется, если не задан градиент заливки).<br/><em>segment_border_width</em> - толщина границ колец.<br/><em>segment_border_color</em> - цвет границ колец. </p>
+</blockquote><h3>Флаги массива</h3>
+<blockquote><p><em>proportional</em> - пропорциональность. Значение <em>true</em> обеспечивает одинаковые углы для элементов массива и расстояний между ними.<br/><em>visible</em> - видимость. Значение <em>true</em> обеспечивает видимость объекта.<br/><em>segments_visible</em> - видимость колец. Значение <em>true</em> обеспечивает видимость элементов.<br/><em>in_progress</em> - в процессе. Флаг принимает значение <em>true</em> в процессе анимации. </p>
+</blockquote><h2><a id="methods"></a>Методы</h2>
+<blockquote><p><em>build()</em> - выполняет основные вычисления формы и внешнего вида базового и свободных колец с учетом заданных свойств и флагов.</p><p><em>draw()</em> - функция отрисовки объекта. </p><p><em>instanceCopy()</em> - создание независимой копии объекта. </p><p><em>catchSegment(e)</em> - захват кольца с помощью щелчка левой кнопкой мыши на нем. </p><p><em>rotateSegmentByMouseMovement(e)</em> - вращение захваченнного кольца перемещением курсора мыши. </p><p><em>rotateSegmentByMouseWheel(e)</em> - вращение захваченного кольца с помощью вращения колеса мыши. </p><p><em>releaseSegment()</em> - освобождение захваченного кольца осуществляется отпусканием левой кнопки мыши. </p><p><em>checkCaptcha()</em> - проверка положения всех колец.<br/>Если разрывы всех колец совмещены с достаточной точность "precision", то запускается событие "segment-captcha-unlocked". </p>
+</blockquote><h2><a id="events"></a> События</h2><p>События, запускаемые объектом SegmentCaptcha, реализованы с помощью CustomEvent.<br/>В параметре <em>detail.captcha</em> передается ссылка на сам объект.</p>
+<blockquote><p><em>segment-captcha-changed</em> - объект изменен. Событие запускается, если изменено одно из колец. </p><p><em>segment-captcha-unlocked</em> - captcha разблокирована. Событие запускается, если разрывы всех колец совмещены с точность "precision". </p>
+</blockquote>
+<hr/><p><a href="../../readme.ru.html">Главная</a> → Круговой тест CAPTCHA </p>
+</body>
+</html>

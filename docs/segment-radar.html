@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>segment-radar</title>
+<style type="text/css">/*...*/</style>
+</head>
+<body>
+<p><a href="../readme.html">Home</a> → Segment Radar</p>
+<hr/><h1>SegmentRadar</h1><h2>Contents</h2>
+<ol>
+  <li><a href="#description">Object description</a></li>
+  <li><a href="#dependencies">Object dependencies</a></li>
+  <li><a href="#constructor">Object creation</a></li>
+  <li><a href="#examples">Examples</a></li>
+  <li><a href="#properties">Properties</a></li>
+  <li><a href="#methods">Methods</a></li>
+  <li><a href="#events">Events</a></li>
+</ol><h2><a id="description"></a>Object description</h2><p>Radar (graphical object) - a round interface for visualizing data from a radar (Fig. 1). </p><p><img src="../docs/images/segment_radar.png" alt="SegmentRadarGeometry" /><br/>Fig. 1 - Radar</p><h2><a id="dependencies"></a>Object dependencies</h2><p>The following scripts should be included in the &lt;head&gt; section: </p>
+<ul>
+  <li>segment.js</li>
+  <li>segment-dot.js</li>
+  <li>segment-grid.js</li>
+  <li>segment-gradient.js</li>
+  <li>utilities.js</li>
+</ul><h2><a id="constructor"></a>Object creation</h2><p>To create an object, the main parameters are passed to the constructor function: </p>
+<blockquote><p><em>id</em> - radar identificator as a text string.<br/><em>context</em> - CanvasRenderingContext2D for drawing the radar.<br/><em>cx</em> - X coordinate of the radar center.<br/><em>cy</em> - Y coordinate of the radar center.<br/><em>thickness</em> - thickness of the radar. </p>
+</blockquote><h2><a id="examples"></a>Examples</h2><p><a href="../examples/round-radar-examples.html" target="_blank">Examples</a> of using various properties and methods of the object. </p><h2><a id="properties"></a>Properties</h2><p><em>factor</em> - zoom ratio of targets on the radar screen. </p><p>SegmentRadar is a composite object. It includes: </p>
+<blockquote><p><em>grid</em> - coordinate grid represented by a <a href="segment-grid.html">SegmentGrid</a>.<br/><em>locator</em> - locator represented by a <a href="segment.html">Segment</a>.<br/><em>frame</em> - frame represented by a <a href="segment.html">Segment</a>. </p>
+</blockquote><h3>Radar Style</h3>
+<blockquote><p><em>gradient</em> - fill gradient. Type of value is <a href="segment-gradient.html">SegmentGradient</a>.<br/><em>background</em> - fill color (applies if fill gradient is not specified).<br/><em>border_width</em> - base grid border width.<br/><em>border_color</em> - base grid border color.</p><p><em>locator_angle</em> - the angle of the segment representing the locator.<br/><em>locator_period</em> - locator rotation period.<br/><em>locator_gradient</em> - locator segment fill gradient.<br/><em>locator_border_width</em> - locator segment border width.<br/><em>locator_border_color</em> - locator segment border color. </p><p><em>frame_gradient</em> - frame segment fill gradient.<br/><em>frame_background</em> - frame segment fill color.<br/><em>frame_border_width</em> - frame segment border width.<br/><em>frame_border_color</em> - frame segment border color. </p><p><em>dot_radius</em> - radius of dots representing targets.<br/><em>dot_gradient</em> - dots fill gradient.<br/><em>dot_background</em> - dots fill color.<br/><em>dot_border_width</em> - dots border width.<br/><em>dot_border_color</em> - dots border color. </p>
+</blockquote><h3>Object Flags</h3>
+<blockquote><p><em>visible</em> - value <em>true</em> ensures object visibility.<br/><em>segments_visible</em> - value <em>true</em> ensures targets visibility.<br/><em>locator_enabled</em> - locator operating mode: <em>true</em> - enabled, <em>false</em> - disabled.<br/><em>in_progress</em> - flag takes the value <em>true</em> during the animation. </p>
+</blockquote><h2><a id="methods"></a>Methods</h2>
+<blockquote><p><em>build()</em> - performs basic calculations of the shape and style of object, taking into account the specified properties and flags. </p><p><em>draw()</em> - draws an object. </p><p><em>instanceCopy()</em> - creates an independent copy of the object. </p><p><em>startLocator()</em> - turning on the locator. </p><p><em>rotateLocator()</em> - rotation of the locator (used automatically if the locator is on). </p><p><em>stopLocator()</em> - turning off the locator. </p><p><em>targetsToDots(targets)</em> - method for calculating the coordinates of targets on the locator screen using the input targets array.<br/>The targets array must contain objects in the format: </p>
+  <blockquote><p>{ 'id' : identificator, 'x' : abscissa, 'y' : ordinate, 'angle' : angle } </p>
+  </blockquote>
+</blockquote><h3>Radar Animation</h3><p>The radar is designed to track the coordinates of targets.<br/>When changing the position of targets, it is needed to call the targetsToDots method, to which should pass the updated targets array.<br/>This method will update the list of dots representing targets and fire the <em>segment-radar-changed</em> event.<br/>When this event occurs, it is needed to clear the canvas and call the draw () method to update the radar state. </p><h2><a id="events"></a>Events</h2><p>Events triggered by a SegmentRadar are implemented using a CustomEvent.<br/>In the <em>detail.radar</em> field, a link to the object itself is passed. </p>
+<blockquote><p><em>segment-radar-changed</em> - state of the object is changed. </p>
+</blockquote>
+<hr/><p><a href="../readme.html">Home</a> → Segment Radar </p>
+</body>
+</html>

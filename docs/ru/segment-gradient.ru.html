@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>segment-gradient.ru</title>
+<style type="text/css">/*...*/</style>
+</head>
+<body>
+<p><a href="../../readme.ru.html">Главная</a> → Сегментный градиент</p>
+<hr/><h1>SegmentGradient</h1><h2>Содержание</h2>
+<ol>
+  <li><a href="#description">Описание объекта</a></li>
+  <li><a href="#dependencies">Зависимости объекта</a></li>
+  <li><a href="#constructor">Создание объекта</a></li>
+</ol><h2><a id="description"></a>Описание объекта</h2><p>Сегментный градиент – пользовательский градиент для заливки элементов круговых интерфейсов. </p><h2><a id="dependencies"></a>Зависимости объекта</h2><p>Для создания объекта типа SegmentGauge необходимо подключить следующие скрипты: </p>
+<ul>
+  <li>utilities.js</li>
+</ul><h2><a id="constructor"></a>Создание объекта</h2><p>Для создания пользовательского градиента в функцию-конструктор передаются следующие параметры: </p>
+<blockquote><p><em>type</em> - тип градиента. Допустимые значения: </p>
+  <blockquote><p><em>"linear"</em> - линейный градиент.<br/><em>"radial"</em> - радиальный градиент.<br/><em>"conic"</em> - конический градиент. </p>
+  </blockquote><p><em>direction</em> - направление градиента. Набор допустимых значений зависит от типа градиента и типа объекта заливки. </p><p><em>stops_string</em> - строка, задающая позицию каждого цвета через точки остановки.<br/>Цвет может быть задан в виде ключевого слова, в формате HEX(RGB), в формате RGB или RGBA.<br/>Точка остановки задается в процентах.<br/>Цвет и точка разделяются пробелом.<br/>Пары цвет-точка в строке разделяются запятыми. </p>
+</blockquote><p>Пример радиального пользовательского градиента, исходящего из центра сегмента (рис. 1):</p>
+<blockquote><p>CustomGradient('radial', 'from-center', '#06ff1a 45%, #00b050 76%, #034400 98%') </p>
+</blockquote><p><img src="../../docs/images/segment_gradient.png" alt="SegmentGradient" /><br/>Рис. 1 - Сегментный градиент</p>
+<hr/><p><a href="../../readme.ru.html">Главная</a> → Сегментный градиент </p>
+</body>
+</html>

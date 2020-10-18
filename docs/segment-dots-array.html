@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>segment-dots-array</title>
+<style type="text/css">/*...*/</style>
+</head>
+<body>
+<p><a href="../readme.html">Home</a> → Segment Dots Array</p>
+<hr/><h1>SegmentDotsArray</h1><h2>Contents</h2>
+<ol>
+  <li><a href="#description">Object description</a></li>
+  <li><a href="#dependencies">Object dependencies</a></li>
+  <li><a href="#constructor">Object creation</a></li>
+  <li><a href="#examples">Examples</a></li>
+  <li><a href="#properties">Properties</a></li>
+  <li><a href="#methods">Methods</a></li>
+  <li><a href="#events">Events</a></li>
+</ol><h2><a id="description"></a>Object description</h2><p>Segment Dots Array is an array of <a href="segment-dot.html">dots</a> located inside the base segment along an arc of a circle at the same distance from each other (Fig. 1).</p><p><img src="../docs/images/segment_dots_array_geometry.png" alt="SegmentDotsArrayGeometry" /><br/>Fig. 1 - Segment Dots Array Geometry. </p><p>R - radius of the base circle on which the centers of the array dots are located.<br/>α - angle of segment which bound the dot.<br/>β - angle between array dots.<br/>c - dot center.<br/>r - dot radius. </p><h2><a id="dependencies"></a>Object dependencies</h2><p>The following scripts should be included in the &lt;head&gt; section: </p>
+<ul>
+  <li>segment.js</li>
+  <li>segment-dot.js</li>
+  <li>segment-gradient.js</li>
+  <li>utilities.js</li>
+</ul><h2><a id="constructor"></a>Object creation</h2><p>To create an object, the main parameters are passed to the constructor function. These parameters are used to create the base segment: </p>
+<blockquote><p><em>id</em> - segment dots array identificator as a text string.<br/><em>context</em> - CanvasRenderingContext2D for drawing a segment dots array.<br/><em>cx</em> - X coordinate of the base segment center.<br/><em>cy</em> - Y coordinate of the base segment center.<br/><em>r_in</em> - base segment inner radius.<br/><em>thickness</em> - thickness of the base segment.<br/><em>init_angle</em> - the initial angle of the base segment in degrees. May take negative values. <em>angle</em> - angle of the base segment in degrees.</p>
+</blockquote><h2><a id="examples"></a>Examples</h2><p><a href="../examples/segment-dots-array-examples.html" target="_blank">Examples</a> of using various properties and methods of the object. </p><h2><a id="properties"></a>Properties</h2><h3>Base Segment Style</h3>
+<blockquote><p><em>gradient</em> - base segment fill gradient. Type of value is <a href="segment-gradient.html">SegmentGradient</a>.<br/><em>background</em> - base segment fill color (applies if fill gradient is not specified).<br/><em>border_width</em> - base segment border width.<br/><em>border_color</em> - base segment border color. </p>
+</blockquote><p>The borders of the base segment can be set separately using direct access to the base segment through the <em>base_segment</em> property. </p><h3>Array Dots Parameters</h3>
+<blockquote><p><em>dots_count</em> - the number of dots-elements of the array.<br/><em>dot_angle</em> - angle of segment which bound the dot.<br/><em>dot_radius</em> - dot radius.<br/><em>base_radius</em> - radius of the base circle.<br/><em>start_with</em> - start placing objects on the base segment with dot or with empty space. Valid values: </p>
+  <blockquote><p><em>"dot"</em> - start with dot.<br/><em>"space"</em> - start with empty space. </p>
+  </blockquote>
+</blockquote><h3>Array Dots Style</h3>
+<blockquote><p><em>dot_gradient</em> - array dots fill gradient. Type of value is <a href="segment-gradient.html">SegmentGradient</a>.<br/><em>dot_background</em> - array dots fill color (applies if fill gradient is not specified).<br/><em>dot_border_width</em> - array dots border width.<br/><em>dot_border_color</em> - array dots border color. </p>
+</blockquote><h3>Segment Dots Array Flags</h3>
+<blockquote><p><em>visible</em> - value <em>true</em> ensures object visibility.<br/><em>segments_visible</em> - value <em>true</em> ensures array dots visibility.<br/><em>in_progress</em> - flag takes the value <em>true</em> during the animation.</p>
+</blockquote><h2><a id="methods"></a>Methods</h2>
+<blockquote><p><em>build()</em> - performs basic calculations of the shape and style of the base segment and array elements, taking into account the specified properties and flags. </p><p><em>draw()</em> - draws an object. </p><p><em>instanceCopy()</em> - creates an independent copy of the object. </p>
+</blockquote><h3>Dots Array Animation</h3><p>Segment Dots Array animation is various changes in the shape, position, or style of the array dots over time. </p><p>Key animation parameters: </p>
+<blockquote><p><em>duration</em> - animation duration. Sets in seconds.<br/><em>delay</em> - delay before the start of the animation. Sets in seconds.<br/><em>direction</em> - animation direction. Valid values ​​depend on the type of animation.<br/><em>order</em> - animation order. Valid values: </p>
+  <blockquote><p><em>"together"</em>.<br/><em>"one-by-one-clockwise"</em>.<br/><em>"one-by-one-anticlockwise"</em>.<br/>In case of <em>one-by-one</em> order the <em>duration</em> will be divided evenly between the array elements, taking into account the <em>lag</em> between animation of array elements. </p>
+  </blockquote><p><em>lag</em> - lag between animation of array elements. Sets in seconds. </p>
+</blockquote><h4>Animation Methods</h4>
+<blockquote><p><em>appear(order, lag, direction, duration, delay)</em> - appearance of the array dots due to a gradual change in their shape. </p>
+  <blockquote><p>The <em>direction</em> parameter can take values ​​that are valid for a similar method of <a href="segment-dot.html">SegmentDot</a>.<br/>If all array dots appear, then the event <em>segment-dots-array-appeared</em> dispatches. </p>
+  </blockquote><p><em>disappear(direction, duration, delay)</em> - disappearance of the array dots due to a gradual change in their shape. </p>
+  <blockquote><p>The <em>direction</em> parameter can take values ​​that are valid for a similar method of <a href="segment-dot.html">SegmentDot</a>.<br/>If all array dots appear, then the event <em>segment-dots-array-disappeared</em> dispatches.</p>
+  </blockquote><p><em>fadeIn(order, lag, duration, delay)</em> - gradual appearance of the array dots due to a change in their transparency. </p>
+  <blockquote><p>If all array dots appear using fading, then the event <em>segment-dots-array-faded-in</em> dispatches. </p>
+  </blockquote><p><em>fadeOut(order, lag, duration, delay)</em> - gradual disappearance of the array dots due to a change in their transparency.</p>
+  <blockquote><p>If all array dots disappear using fading, then the event <em>segment-dots-array-faded-out</em> dispatches. </p>
+  </blockquote>
+</blockquote><h2><a id="events"></a>Events</h2><p>Events triggered by a SegmentDotsArray are implemented using a CustomEvent.<br/>In the <em>detail.array</em> field, a link to the object itself is passed. </p>
+<blockquote><p><em>segment-dots-array-changed</em> - event dispatches if one of the array elements or the base segment is changed. </p><p><em>segment-dots-array-appeared</em><br/><em>segment-dots-array-disappeared</em><br/><em>segment-dots-array-faded-in</em><br/><em>segment_dots_array_faded_out</em> </p>
+</blockquote>
+<hr/><p><a href="../readme.html">Home</a> → Segment Dots Array </p>
+</body>
+</html>

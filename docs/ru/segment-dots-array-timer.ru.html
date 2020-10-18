@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>segment-dots-array-timer.ru</title>
+<style type="text/css">/*...*/</style>
+</head>
+<body>
+<p><a href="../../readme.ru.html">Главная</a> → Таймер с индиктором прогресса в виде сегментного массива точек </p>
+<hr/><h1>SegmentDotsArrayTimer</h1><h2>Содержание</h2>
+<ol>
+  <li><a href="#description">Описание объекта</a></li>
+  <li><a href="#dependencies">Зависимости объекта</a></li>
+  <li><a href="#constructor">Создание объекта</a></li>
+  <li><a href="#examples">Примеры</a></li>
+  <li><a href="#properties">Свойства</a></li>
+  <li><a href="#methods">Методы</a></li>
+  <li><a href="#events">События</a></li>
+</ol><h2><a id="description"></a>Описание объекта</h2><p>Таймер – элемент управления, выдающий определённый сигнал через заданный промежуток времени (рис. 1).</p><p><img src="../../docs/images/segment_dots_array_timer.png" alt="SegmentDotsArrayTimer" /><br/>Рис. 1 - Таймер с индиктором прогресса в виде сегментного массива </p><h2><a id="dependencies"></a>Зависимости объекта</h2><p>Объект SegmentDotsArrayTimer наследуется от объекта SegmentDotsArrayProgressBar.<br/>Для создания объекта типа SegmentDotsArrayTimer необходимо подключить следующие скрипты: </p>
+<ul>
+  <li>segment.js</li>
+  <li>segment-dot.js</li>
+  <li>segment-dots-array-progress-bar.js</li>
+  <li>segment-gradient.js</li>
+  <li>utilities.js</li>
+</ul><h2><a id="constructor"></a>Создание объекта</h2><p>Для создания объекта в функцию-конструктор передаются основные параметры: </p>
+<blockquote><p><em>id</em> - идентификатор таймера в виде текстовой строки.<br/><em>context</em> - контекст типа CanvasRenderingContext2D для отрисовки таймера.<br/><em>cx</em> - координата X центра базового сегмента таймера.<br/><em>cy</em> - координата Y центра базового сегмента таймера.<br/><em>r_in</em> - внутренний радиус базового сегмента таймера.<br/><em>thickness</em> - толщина базового сегмента таймера.<br/><em>init_angle</em> - начальный угол базового сегмента таймера в градусах. Может принимать отрицательные значения. <em>angle</em> - угол базового сегмента таймера в градусах.</p>
+</blockquote><p>Внешний радиус базового сегмента таймера <em>r_out</em> будет рассчитан автоматически в процессе создания объекта.</p><h2><a id="examples"></a>Примеры</h2><p><a href="../../examples/round-timer-examples.html" target="_blank">Примеры</a> использования различных свойств и методов объекта. </p><h2><a id="properties"></a>Свойства</h2><p>Объект SegmentDotsArrayTimer наследует свойства объекта SegmentDotsArrayProgressBar и обладает собственнными свойствами: </p>
+<blockquote><p><em>on_pause_text</em> - текстовая надпись в режиме паузы.<br/><em>on_pause_font</em> - шрифт текста в режиме паузы. </p>
+</blockquote><h3>Флаги объекта</h3><p>Объект SegmentDotsArrayTimer наследует флаги объекта SegmentDotsArrayProgressBar и обладает собственнными флагами: </p>
+<blockquote><p><em>on_pause</em> - режим паузы. Значение <em>true</em> передается для установки режима паузы, значение <em>false</em> - для снятия режима паузы. </p>
+</blockquote><h2><a id="methods"></a>Методы</h2>
+<blockquote><p><em>build()</em> - выполняет основные вычисления формы и внешнего вида объекта с учетом заданных свойств и флагов. Этот метод необходимо вызывать после изменения свойств объекта, чтобы они вступили в силу. </p><p><em>draw()</em> - функция отрисовки таймера. </p><p><em>instanceCopy()</em> - создание независимой копии объекта. </p><p><em>countdown(new_value, value, delay)</em> - функция обратного отсчета от значения <em>value</em> до значения <em>new_value</em> с задержкой <em>delay</em>. </p><p><em>start()</em> - запуск таймера для начала обратного отсчета или продолжения отсчета после паузы. </p><p><em>pause()</em> - установка режима паузы. </p><p><em>stop()</em> - остановка и сброс таймера. </p>
+</blockquote><h2><a id="events"></a> События</h2><p>События, запускаемые объектом SegmentDotsArrayTimer, реализованы с помощью CustomEvent.<br/>В поле <em>detail.timer</em> передается ссылка на сам объект. </p>
+<blockquote><p><em>segment-dots-array-timer-changed</em> - состояние объекта изменено.<br/><em>segment-dots-array-timer-is-up</em> - сигнал о завершении указанного периода времени. </p>
+</blockquote>
+<hr/><p><a href="../../readme.ru.html">Главная</a> → Таймер с индиктором прогресса в виде сегментного массива точек </p>
+</body>
+</html>

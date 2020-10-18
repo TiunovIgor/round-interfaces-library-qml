@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>segment-spiral</title>
+<style type="text/css">/*...*/</style>
+</head>
+<body>
+<p><a href="../readme.html">Home</a> → Segment Spiral </p>
+<hr/><h1>SegmentSpiral</h1><h2>Contents</h2>
+<ol>
+  <li><a href="#description">Object description</a></li>
+  <li><a href="#dependencies">Object dependencies</a></li>
+  <li><a href="#constructor">Object creation</a></li>
+  <li><a href="#examples">Examples</a></li>
+  <li><a href="#properties">Properties</a></li>
+  <li><a href="#methods">Methods</a></li>
+  <li><a href="#events">Events</a></li>
+</ol><h2><a id="description"></a>Object description</h2><p>Segment spiral is a part of a ring segment, limited by a circle and a spiral, having a common center, as well as a ray emanating from this center (Fig. 1). </p><p><img src="../docs/images/segment_spiral_geometry.png" alt="SegmentSpiralGeometry" /><br/>Fig. 1 - Segment Spiral Geometry </p><p>C - segment spiral center - this is the center of the base segment.<br/>R1 - radius of the smaller circle.<br/>R2 - radius of the larger circle.<br/>CA - ray, bounding the base segment and determining its beginning.<br/>CB - ray, bounding the base segment and determining its ending.<br/>T - thickness of the base segment equal to the difference between R2 and R1.<br/>α - initial angle of the base segment - this is the angle between the horizontal axis X and the ray CA.<br/>β - angle of the base segment - this is the angle between the rays CA and CB. </p><h2><a id="dependencies"></a>Object dependencies</h2><p>The following scripts should be included in the &lt;head&gt; section: </p>
+<ul>
+  <li>segment-gradient.js</li>
+  <li>utilities.js</li>
+</ul><h2><a id="constructor"></a>Object creation</h2><p>To create an object, the main parameters are passed to the constructor function: </p>
+<blockquote><p><em>id</em> - segment spiral identificator as a text string.<br/><em>context</em> - CanvasRenderingContext2D for drawing the segment spiral.<br/><em>cx</em> - X coordinate of the base segment center.<br/><em>cy</em> - Y coordinate of the base segment center.<br/><em>r_in</em> - base segment inner radius.<br/><em>thickness</em> - thickness of the base segment.<br/><em>init_angle</em> - the initial angle of the base segment in degrees. May take negative values.<br/><em>angle</em> - angle of the base segment in degrees. </p>
+</blockquote><p>The outer radius of the base segment <em>r_out</em> will be calculated automatically during the creation of the object. </p><h2><a id="examples"></a>Examples</h2><p><a href="../examples/segment-spiral-examples.html" target="_blank">Examples</a> of using various properties and methods of the object. </p><h2><a id="properties"></a>Properties</h2><h3>Параметры фигуры</h3>
+<blockquote><p><em>position</em> - the position of the figure in the base segment relative to the spiral side. </p><p>Valid <em>position</em> values: </p>
+  <blockquote><p><em>"inner"</em> - abutment to the inner boundary of the base segment.<br/><em>"outer"</em> - abutment to the outer boundary of the base segment. </p>
+  </blockquote><p><em>direction</em> - direction of increasing figure thickness. </p><p>Valid <em>direction</em> values: </p>
+  <blockquote><p><em>"clockwise"</em>.<br/><em>"anticlockwise"</em>.</p>
+  </blockquote>
+</blockquote><h3>Segment Spiral Style</h3>
+<blockquote><p><em>gradient</em> - fill gradient. Type of value is <a href="segment-gradient.html">SegmentGradient</a>.<br/><em>background</em> - fill color (applies if fill gradient is not specified).<br/><em>border_width</em> - segment spiral border width.<br/><em>border_color</em> - segment spiral border color. </p>
+</blockquote><p>Segment spiral borders can be set separately. </p><p>Types of segment spiral borders (Fig. 2)</p><p>A) Opening Border – first border when clockwise movement.<br/>Suitable for a spiral with an anticlockwise <em>direction</em>. </p>
+<blockquote><p><em>border_opening_width</em> - width of the opening border.<br/><em>border_opening_color</em> - color of the opening border. </p>
+</blockquote><p>B) Outer Border – segment arc with larger radius.<br/>Suitable for a spiral with an outer <em>position</em>. </p>
+<blockquote><p><em>border_outer_width</em> - width of the outer border.<br/><em>border_outer_color</em> - color of the outer border. </p>
+</blockquote><p>C) Inner Border – segment arc with smaller radius.<br/>Suitable for a spiral with an inner <em>position</em>. </p>
+<blockquote><p><em>border_inner_width</em> - width of the inner border.<br/><em>border_inner_color</em> - color of the inner border. </p>
+</blockquote><p>D) Closing Border – extreme border when clockwise movement.<br/>Suitable for a spiral with a clockwise <em>direction</em>. </p>
+<blockquote><p><em>border_closing_width</em> - width of the closing border.<br/><em>border_closing_color</em> - color of the closing border. </p>
+</blockquote><p>E) Spiral Borders – spiral side of a figure. </p>
+<blockquote><p><em>border_spiral_width</em> - width of the spiral border.<br/><em>border_spiral_color</em> - color of the spiral border. </p>
+</blockquote><p>If a separate spiral border width and/or color is specified, then the specified style will be used to draw it.<br/>If a separate spiral border is not specified, then the general style of segment border will be used to draw it. </p><h3>Object Flags</h3>
+<blockquote><p><em>visible</em> - flag ensures the visibility of the object if set in <em>true</em>.<br/><em>in_progress</em> - flag takes the value <em>true</em> during the animation. </p>
+</blockquote><h2><a id="methods"></a>Methods</h2>
+<blockquote><p><em>calc()</em> - performs basic calculations of the shape and style of a segment spiral when it is created, changed and during animation.<br/>This method should be called after changing the properties of the object so that they take effect. </p><p><em>calcBorder()</em> - computes segment spiral borders styles. Called automatically from <em>calc()</em> method. </p><p><em>draw()</em> - draws an object. </p><p><em>instanceCopy()</em> - creates an independent copy of the object.</p>
+</blockquote><h3>Segment Spiral Animation</h3><p>Segment Spiral animation is various changes in the shape, position, or style of the segment over time. </p><p>Key animation parameters: </p>
+<blockquote><p><em>duration</em> - animation duration. Sets in seconds.<br/><em>delay</em> - delay before the start of the animation. Sets in seconds.<br/><em>direction</em> - animation direction. Valid values ​​depend on the type of animation. </p>
+</blockquote><h4>Animation Methods</h4>
+<blockquote><p><em>appear(direction, duration, delay)</em> - the appearance of a segment due to a gradual change in its shape. </p><p>Valid values ​​for the <em>direction</em>: </p>
+  <blockquote><p><em>"from-center"</em> - from segment center.<br/><em>"to-center"</em> - to segment center.<br/><em>"from-axis"</em> - from segment axis.<br/><em>"clockwise"</em> - clockwise from the opening border.<br/><em>"anticlockwise"</em> - anticlockwise from the closing border. </p>
+  </blockquote><p><em>disappear(direction, duration, delay)</em> - the disappearance of a segment due to a gradual change in its shape. </p><p>Valid values ​​for the <em>direction</em>: </p>
+  <blockquote><p><em>"from-center"</em> - from segment center.<br/><em>"from-outside"</em> - to segment center.<br/><em>"to-axis"</em> - to segment axis.<br/><em>"clockwise"</em> - clockwise to the closing border.<br/><em>"anticlockwise"</em> - anticlockwise to the opening border. </p>
+  </blockquote><p><em>rotate(direction, angle, duration, delay)</em> - rotation of the segment by <em>angle</em> for <em>duration</em> seconds. </p><p>The <em>angle</em> of rotation is set in degrees. </p><p>Valid values ​​for the <em>direction</em>: </p>
+  <blockquote><p><em>"clockwise"</em> - clockwise rotation.<br/><em>"anticlockwise"</em> - anticlockwise rotation. </p>
+  </blockquote><p><em>fadeIn(duration, delay)</em> - gradual appearance of a segment due to a change in its transparency. </p><p><em>fadeOut(duration, delay)</em> - gradual disappearance of a segment due to a change in its transparency. </p>
+</blockquote><h2><a id="events"></a>Events</h2><p>Events triggered by a SegmentSpiral are implemented using a CustomEvent.<br/>In the <em>detail.spiral</em> field, a link to the object itself is passed. </p>
+<blockquote><p><em>segment-spiral-changed</em> - event dispatches every time the <em>calc()</em> method is executed. </p><p><em>segment-spiral-appeared</em><br/><em>segment-spiral-disappeared</em><br/><em>segment-spiral-rotated</em><br/><em>segment-spiral-faded-in</em><br/><em>segment-spiral-faded-out</em> </p>
+</blockquote>
+<hr/><p><a href="../readme.html">Home</a> → Segment Spiral </p>
+</body>
+</html>

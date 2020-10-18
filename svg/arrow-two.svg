@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="10" height="100">
+    <linearGradient id="linear-gradient">
+        <stop offset="10%" stop-color="#004ae6" stop-opacity="0.9" />
+        <stop offset="59%" stop-color="#37c8ff" stop-opacity="0.6" />
+        <stop offset="100%" stop-color="rgb(55, 200, 255)" stop-opacity="0.3" />
+    </linearGradient>    
+    <path d="M5 0 L10 100 L5 97 L5 0" fill="red" />
+    <path d="M5 0 L0 100 L5 97  L5 0" fill="darkred" />
+    <circle r="4" cx="5" cy="80" />
+</svg>

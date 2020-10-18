@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>segment-captcha</title>
+<style type="text/css">/*...*/</style>
+</head>
+<body>
+<p><a href="../readme.html">Home</a> → Segment Captcha</p>
+<hr/><h1>SegmentCaptcha</h1><h2>Contents</h2>
+<ol>
+  <li><a href="#description">Object description</a></li>
+  <li><a href="#dependencies">Object dependencies</a></li>
+  <li><a href="#constructor">Object creation</a></li>
+  <li><a href="#examples">Examples</a></li>
+  <li><a href="#properties">Properties</a></li>
+  <li><a href="#methods">Methods</a></li>
+  <li><a href="#events">Events</a></li>
+</ol><h2><a id="description"></a>Object description</h2><p>Segment CAPTCHA test is a computer test in which the user should match the breaks of the rings. Since this task is non-trivial for a computer, solving it the user proves that he or she is a human being, not a computer (Fig. 1). </p><p><img src="../docs/images/segment_captcha_geometry.png" alt="SegmentCaptchaGeometry" /><br/>Fig. 1 - Segment Captcha. </p><p>One of the rings, the base one, is static and cannot be rotated with the mouse. This ring should be styled differently from other rings.<br/>To solve the task, the user must combine the breaks of the remaining rings with the break of the base ring.<br/>The ring is captured by clicking and holding the left mouse button.<br/>The ring is rotated by moving the mouse cursor. </p><h2><a id="dependencies"></a>Object dependencies</h2><p>The following scripts should be included in the &lt;head&gt; section: </p>
+<ul>
+  <li>segment.js</li>
+  <li>segment-gradient.js</li>
+  <li>utilities.js</li>
+</ul><h2><a id="constructor"></a>Object creation</h2><p>To create an object, the main parameters are passed to the constructor function. These parameters are used to create the base segment: </p>
+<blockquote><p><em>id</em> - captcha identificator as a text string.<br/><em>context</em> - CanvasRenderingContext2D for drawing the object.<br/><em>cx</em> - X coordinate of the base segment center.<br/><em>cy</em> - Y coordinate of the base segment center.<br/><em>r_in</em> - object inner radius.<br/><em>thickness</em> - thickness of the object. </p>
+</blockquote><h2><a id="examples"></a>Examples</h2><p><a href="../examples/round-captcha-examples.html" target="_blank">Examples</a> of using various properties and methods of the object. </p><h2><a id="properties"></a>Properties</h2>
+<blockquote><p><em>space_thickness</em> - thickness of spaces between rings.<br/><em>precision</em> - alignment accuracy of ring breaks in degrees. </p>
+</blockquote><h3>Base Ring Style</h3>
+<blockquote><p><em>base_segment_gradient</em> - fill gradient. Type of value is <a href="segment-gradient.html">SegmentGradient</a>.<br/><em>base_segment_background</em> - fill color (applies if fill gradient is not specified).<br/><em>base_segment_border_width</em> - base segment border width.<br/><em>base_segment_border_color</em> - base segment border color. <em>base_segment_position</em> - base ring position. </p>
+  <blockquote><p>Valid "base_segment_position" values:<br/><em>"inner"</em> - the base is the inner ring.<br/><em>"outer"</em> - the base is the outer ring. </p>
+  </blockquote><p>The borders of the base segment can be set separately using direct access to it through the <em>base_segment</em> property. </p>
+</blockquote><h3>Free rings properties</h3>
+<blockquote><p><em>segments_count</em> - total number of rings.<br/><em>segment_break</em> - ring break in degrees. </p>
+</blockquote><h3>Free Rings Style</h3>
+<blockquote><p><em>segment_gradient</em> - segments fill gradient. Type of value is <a href="segment-gradient.html">SegmentGradient</a>.<br/><em>segment_background</em> - segments fill color (applies if fill gradient is not specified).<br/><em>segment_border_width</em> - segments border width.<br/><em>segment_border_color</em> - segments border color. </p>
+</blockquote><h3>Object Flags</h3>
+<blockquote><p><em>proportional</em> - value <em>true</em> ensures the same thickness of the rings and the spaces between them.<br/><em>visible</em> - value <em>true</em> ensures object visibility.<br/><em>segments_visible</em> - value <em>true</em> ensures rings visibility.<br/><em>in_progress</em> - flag takes the value <em>true</em> during the animation. </p>
+</blockquote><h2><a id="methods"></a>Methods</h2>
+<blockquote><p><em>build()</em> - performs basic calculations of the shape and style of object, taking into account the specified properties and flags. </p><p><em>draw()</em> - draws an object. </p><p><em>instanceCopy()</em> - creates an independent copy of the object. </p><p><em>catchSegment(e)</em> - grabbing the ring by left clicking on it. </p><p><em>rotateSegmentByMouseMovement(e)</em> - rotating the grabbed ring by mouse move. </p><p><em>rotateSegmentByMouseWheel(e)</em> - rotating the grabbed ring by mouse wheel. </p><p><em>releaseKnob()</em> - the grabbed ring is released by releasing the left mouse button. </p><p><em>checkCaptcha()</em> - checking the position of all rings.<br/>If the breaks of all rings are aligned with sufficient "precision", then the "segment-captcha-unlocked" event is triggered. </p>
+</blockquote><h2><a id="events"></a>Events</h2><p>Events triggered by a SegmentCaptcha are implemented using a CustomEvent.<br/>In the <em>detail.captcha</em> field, a link to the object itself is passed. </p>
+<blockquote><p><em>segment-knob-changed</em> - state of the object is changed. </p>
+</blockquote>
+<hr/><p><a href="../readme.html">Home</a> → Segment Captcha </p>
+</body>
+</html>

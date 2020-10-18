@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>segment-dot.ru</title>
+<style type="text/css">/*...*/</style>
+</head>
+<body>
+<p><a href="../../readme.ru.html">Главная</a> → Сегментная точка</p>
+<hr/><h1>SegmentDot</h1><h2>Содержание</h2>
+<ol>
+  <li><a href="#description">Описание объекта</a></li>
+  <li><a href="#dependencies">Зависимости объекта</a></li>
+  <li><a href="#constructor">Создание объекта</a></li>
+  <li><a href="#examples">Примеры</a></li>
+  <li><a href="#properties">Свойства</a></li>
+  <li><a href="#methods">Методы</a></li>
+  <li><a href="#events">События</a></li>
+</ol><h2><a id="description"></a>Описание объекта</h2><p>Точка (сегментная точка) – это элемент кругового интерфейса, представленный в виде круга.<br/>SegmentDot - вспомогательный класс библиотеки круговых интерфейсов для реализации сегментного массива точек.</p><p><img src="../../docs/images/segment_dot.png" alt="SegmentDot" /><br/>Рис. 1 - Точка </p><h2><a id="dependencies"></a>Зависимости объекта</h2><p>Для создания объекта типа SegmentDot необходимо подключить следующие скрипты: </p>
+<ul>
+  <li>segment-gradient.js</li>
+  <li>utilities.js</li>
+</ul><h2><a id="constructor"></a>Создание объекта</h2><p>Для создания объекта в функцию-конструктор передаются основные параметры: </p>
+<blockquote><p><em>id</em> - идентификатор точки в виде текстовой строки.<br/><em>context</em> - контекст типа CanvasRenderingContext2D для отрисовки точки.<br/><em>cx</em> - координата X центра точки.<br/><em>cy</em> - координата Y центра точки.<br/><em>r</em> - радиус точки. </p>
+</blockquote><h2><a id="examples"></a>Примеры</h2><p><a href="../../examples/segment-dot-examples.html" target="_blank">Примеры</a> использования различных свойств и методов объекта. </p><h2><a id="properties"></a>Свойства</h2><h3>Стиль оформления точки</h3>
+<blockquote><p><em>gradient</em> - градиент заливки круга типа <a href="segment-gradient.ru.html">SegmentGradient</a>.</p><p>Допустимые значения направления для линейного градиента: </p>
+  <blockquote><p><em>"to-left"</em> - справа налево.<br/><em>"to-right"</em> - слева направо.<br/><em>"to-bottom"</em> - сверху вниз.<br/><em>"to-top"</em> - снизу вверх.</p>
+  </blockquote><p>Допустимые значения направления для радиального градиента: </p>
+  <blockquote><p><em>"from-center"</em> - из центра.<br/><em>"to-center"</em> - к центру.</p>
+  </blockquote><p><em>background</em> - цвет заливки круга (применяется, если не задан градиент заливки).<br/><em>border_width</em> - толщина окружности.<br/><em>border_color</em> - цвет окружности. </p>
+</blockquote><h3>Флаги точки</h3>
+<blockquote><p><em>visible</em> - видимость. Значение <em>true</em> обеспечивает видимость объекта.<br/><em>in_progress</em> - в процессе. Флаг принимает значение <em>true</em> в процессе анимации. </p>
+</blockquote><h2><a id="methods"></a>Методы</h2>
+<blockquote><p><em>calc()</em> - выполняет основные вычисления формы и внешнего вида точки.</p><p><em>draw()</em> - функция отрисовки точки. </p><p><em>instanceCopy()</em> - создание независимой копии объекта.</p>
+</blockquote><h3>Анимация точки</h3><p>Анимация точки - это различные изменения формы, положения или стиля оформления точки со временем.</p><p>Основные параметры анимации:</p>
+<blockquote><p><em>duration</em> - длительность анимации. Задается в секундах.<br/><em>delay</em> - задержка перед началом анимации. Задается в секундах.<br/><em>direction</em> - направление анимации. Набор допустимых значений зависит от вида анимации.<br/><em>speed</em> - скорость анимации. Едининцы измерения зависят от вида анимации. </p>
+</blockquote><h4>Методы анимации</h4>
+<blockquote><p><em>appear(direction, duration, delay)</em> - появление точки за счет постепенного изменения формы. </p>
+  <blockquote><p>Допустимые значения параметра <em>direction</em> для метода анимации появления:<br/><em>"from-center"</em> - из центра. </p>
+  </blockquote><p><em>disappear(direction, duration, delay)</em> - Исчезание точки за счет постепенного изменения формы. </p>
+  <blockquote><p>Допустимые значения параметра <em>direction</em> для метода анимации исчезания:<br/><em>"to-center"</em> - к центру. </p>
+  </blockquote><p><em>fadeIn(duration, delay)</em> - постепенное появление точки за счет изменения прозрачности. </p><p><em>fadeOut(duration, delay)</em> - постепенное исчезание точки за счет изменения прозрачности.</p>
+</blockquote><h2><a id="events"></a> События</h2><p>События, запускаемые объектом SegmentDot, реализованы с помощью CustomEvent.<br/>В поле <em>detail.dot</em> передается ссылка на сам объект. </p>
+<blockquote><p><em>segment-dot-changed</em> - точка изменена. Событие запускается каждый раз, когда выполняется метод calc(). </p><p><em>segment-dot-appeared</em> - точка появилась.<br/><em>segment-dot-disappeared</em> - точка исчезла.<br/><em>segment-dot-faded_in</em> - точка появилась методом выцветания.<br/><em>segment-dot-faded_out</em> - точка исчезла методом выцветания. </p>
+</blockquote>
+<hr/><p><a href="../../readme.ru.html">Главная</a> → Сегментная точка </p>
+</body>
+</html>

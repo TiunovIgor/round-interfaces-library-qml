@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>segment-spiral-volume-control</title>
+<style type="text/css">/*...*/</style>
+</head>
+<body>
+<p><a href="../readme.html">Home</a> → Segment Spiral Volume Control</p>
+<hr/><h1>SegmentSpiralVolumeControl</h1><h2>Contents</h2>
+<ol>
+  <li><a href="#description">Object description</a></li>
+  <li><a href="#dependencies">Object dependencies</a></li>
+  <li><a href="#constructor">Object creation</a></li>
+  <li><a href="#examples">Examples</a></li>
+  <li><a href="#properties">Properties</a></li>
+  <li><a href="#methods">Methods</a></li>
+  <li><a href="#events">Events</a></li>
+</ol><h2><a id="description"></a>Object description</h2><p>Volume Control is a graphical control for changing the volume or some other value (Fig. 1). </p><p><img src="../docs/images/segment_spiral_volume_control.png" alt="SegmentSpiralVolumeControl" /><br/>Fig. 1 - Volume control with spiral indicator </p><h2><a id="dependencies"></a>Object dependencies</h2><p>The following scripts should be included in the &lt;head&gt; section: </p>
+<ul>
+  <li>segment.js</li>
+  <li>segment-spiral.js</li>
+  <li>segment-dot.js</li>
+  <li>segment-scale-mark.js</li>
+  <li>segment-knob.js</li>
+  <li>segment-gradient.js</li>
+  <li>utilities.js</li>
+</ul><h2><a id="constructor"></a>Object creation</h2><p>To create an object, the main parameters are passed to the constructor function: </p>
+<blockquote><p><em>id</em> - volume control identificator as a text string.<br/><em>context</em> - CanvasRenderingContext2D for drawing a volume control.<br/><em>cx</em> - X coordinate of the indicator center.<br/><em>cy</em> - Y coordinate of the indicator center.<br/><em>r_in</em> - indicator inner radius.<br/><em>thickness</em> - thickness of the indicator.<br/><em>init_angle</em> - the initial angle of the indicator in degrees. May take negative values.<br/><em>angle</em> - angle of the indicator in degrees. </p>
+</blockquote><p>The outer radius of the indicator <em>r_out</em> will be calculated automatically during the creation of the object. </p><h2><a id="examples"></a>Examples</h2><p><a href="../examples/round-volume-control-examples.html" target="_blank">Examples</a> of using various properties and methods of the object. </p><h2><a id="properties"></a>Properties</h2>
+<blockquote><p><em>min_value</em> - minimum value of changing parameter.<br/><em>max_value</em> - maximum value of changing parameter.<br/><em>value</em> - current value of changing parameter.<br/><em>speed</em> - speed of change of the value when it is programmatically changed. </p>
+</blockquote><p>SegmentSpiralVolumeControl is a composite object. It includes: </p>
+<blockquote><p><em>knob</em> - <a href="segment-knob.html">SegmentKnob</a>.<br/><em>base_spiral</em> - base <a href="segment-spiral.html">SegmentSpiral</a> of indicator.<br/><em>active_spiral</em> - active <a href="segment-spiral.html">SegmentSpiral</a> of indicator. </p>
+</blockquote><h3>Base Spiral Style</h3>
+<blockquote><p><em>base_spiral_gradient</em> - градиент заливки типа <a href="segment-gradient.html">SegmentGradient</a>.<br/><em>base_spiral_background</em> - цвет заливки (применяется, если не задан градиент заливки).<br/><em>base_spiral_border_width</em> - толщина границ.<br/><em>base_spiral_border_color</em> - цвет границ. </p>
+</blockquote><h3>Active Spiral Style</h3>
+<blockquote><p><em>active_spiral_gradient</em> - градиент заливки типа <a href="segment-gradient.html">SegmentGradient</a>.<br/><em>active_spiral_background</em> - цвет заливки (применяется, если не задан градиент заливки).<br/><em>active_spiral_border_width</em> - толщина границ.<br/><em>active_spiral_border_color</em> - цвет границ. </p>
+</blockquote><h3>Volume Control Labels Style</h3><p>Label of the limit position of the knob corresponding to the minimum value of the changing parameter </p>
+<blockquote><p><em>min_text</em> - label text.<br/><em>min_font</em> - text font.<br/><em>min_color</em> - text color.<br/><em>min_border_width</em> - text border width.<br/><em>min_border_color</em> - text border color.<br/><em>min_init_x</em> - initial X coordinate of the label.<br/><em>min_init_y</em> - initial Y coordinate of the label.<br/><em>min_offset_x</em> - X offset of the label.<br/><em>min_offset_y</em> - Y offset of the label. </p>
+</blockquote><p>Label of the limit position of the knob corresponding to the maximum value of the changing parameter </p>
+<blockquote><p><em>max_text</em> - label text.<br/><em>max_font</em> - text font.<br/><em>max_color</em> - text color.<br/><em>max_border_width</em> - text border width.<br/><em>max_border_color</em> - text border color.<br/><em>max_init_x</em> - initial X coordinate of the label.<br/><em>max_init_y</em> - initial Y coordinate of the label.<br/><em>max_offset_x</em> - X offset of the label.<br/><em>max_offset_y</em> - Y offset of the label. </p>
+</blockquote><h3>Object Flags</h3>
+<blockquote><p><em>visible</em> - value <em>true</em> ensures object visibility.<br/><em>in_progress</em> - flag takes the value <em>true</em> during the animation. </p>
+</blockquote><h2><a id="methods"></a>Methods</h2>
+<blockquote><p><em>build()</em> - performs basic calculations of the shape and style of object, taking into account the specified properties and flags. </p><p><em>calcLabels()</em> - determines the initial position of the captions depending on the parameters of the base segment of the indicator. </p><p><em>draw()</em> - draws an object. </p><p><em>instanceCopy()</em> - creates an independent copy of the object. </p><p><em>angleToValue(angle)</em> - function of calculating the value of the changing parameter depending on the angle of rotation of the knob. </p><p><em>valueToAngle(value)</em> - function of calculating the angle of the active spiral of the indicator depending on the current value of the changing parameter. </p><p><em>valueToThickness(value)</em> - function of calculating the thickness of the active spiral of the indicator depending on the current value of the changing parameter. </p><p><em>setValue(value)</em> - function of setting the current value of the changing parameter. </p><p><em>changeValue(value, speed, delay)</em> - animation of changing the current value to <em>value</em> with <em>speed</em> after <em>delay</em>. </p><p><em>catchKnob(e)</em> - grabbing the knob by left clicking on it. </p>
+  <blockquote><p>The method is set as a listener for the <em>mousedown</em> event on the canvas. </p>
+  </blockquote><p><em>rotateKnobByMouseMovement(e)</em> - rotating the grabbed knob by mouse move. </p>
+  <blockquote><p>The method is set as a listener for the <em>mousemove</em> event on the canvas. </p>
+  </blockquote><p><em>rotateKnobByMouseWheel(e)</em> - rotating the grabbed knob by mouse wheel. </p>
+  <blockquote><p>The method is set as a listener for the <em>wheel</em> event on the canvas. </p>
+  </blockquote><p><em>releaseKnob()</em> - the grabbed knob is released by releasing the left mouse button. </p>
+  <blockquote><p>The method is set as a listeners for the <em>mouseup</em> and <em>mouseout</em> events on the canvas. </p>
+  </blockquote><p><em>removeKnotListeners()</em> - removal of the canvas event listeners of the same name emanating from the child object of the <em>SegmentKnob</em> type. </p>
+  <blockquote><p>The method must be called every time after executing the <em>build()</em> method of a child object of type <em>SegmentKnob</em>. </p>
+  </blockquote>
+</blockquote><h2><a id="events"></a>Events</h2><p>Events triggered by a SegmentSpiralVolumeControl are implemented using a CustomEvent.<br/>In the <em>detail.volume_control</em> field, a link to the object itself is passed. </p>
+<blockquote><p><em>segment-spiral-volume-control-changed</em> - state of the object is changed. </p>
+</blockquote>
+<hr/><p><a href="../readme.html">Home</a> → Segment Spiral Volume Control </p>
+</body>
+</html>

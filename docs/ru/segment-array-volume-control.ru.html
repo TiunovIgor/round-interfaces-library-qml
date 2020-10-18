@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>segment-array-volume-control.ru</title>
+<style type="text/css">/*...*/</style>
+</head>
+<body>
+<p><a href="../../readme.ru.html">Главная</a> → Регулятор громкости с индикатором в виде сегментного массива </p>
+<hr/><h1>SegmentArrayVolumeControl</h1><h2>Содержание</h2>
+<ol>
+  <li><a href="#description">Описание объекта</a></li>
+  <li><a href="#dependencies">Зависимости объекта</a></li>
+  <li><a href="#constructor">Создание объекта</a></li>
+  <li><a href="#examples">Примеры</a></li>
+  <li><a href="#properties">Свойства</a></li>
+  <li><a href="#methods">Методы</a></li>
+  <li><a href="#events">События</a></li>
+</ol><h2><a id="description"></a>Описание объекта</h2><p>Регулятор громкости – графический элемент управления для изменения громкости или какой-либо другой величины (рис. 1). </p><p><img src="../../docs/images/segment_array_volume_control.png" alt="SegmentArrayVolumeControl" /><br/>Рис. 1 - Регулятор громкости с индикатором в виде сегментного массива </p><h2><a id="dependencies"></a>Зависимости объекта</h2><p>Для создания объекта типа SegmentArrayVolumeControl необходимо подключить следующие скрипты: </p>
+<ul>
+  <li>segment.js</li>
+  <li>segment-array.js</li>
+  <li>segment-dot.js</li>
+  <li>segment-scale-mark.js</li>
+  <li>segment-knob.js</li>
+  <li>segment-gradient.js</li>
+  <li>utilities.js</li>
+</ul><h2><a id="constructor"></a>Создание объекта</h2><p>Для создания объекта в функцию-конструктор передаются основные параметры: </p>
+<blockquote><p><em>id</em> - идентификатор регулятора громкости в виде текстовой строки.<br/><em>context</em> - контекст типа CanvasRenderingContext2D для отрисовки регулятора громкости.<br/><em>cx</em> - координата X центра регулятора громкости.<br/><em>cy</em> - координата Y центра регулятора громкости.<br/><em>r_in</em> - внутренний радиус индикатора громкости.<br/><em>thickness</em> - толщина индикатора громкости.<br/><em>init_angle</em> - начальный угол индикатора громкости в градусах.<br/><em>angle</em> - угол индикатора громкости в градусах. </p>
+</blockquote><p>Внешний радиус индикатора громкости <em>r_out</em> будет рассчитан автоматически в процессе создания объекта.</p><h2><a id="examples"></a>Примеры</h2><p><a href="../../examples/round-volume-control-examples.html" target="_blank">Примеры</a> использования различных свойств и методов объекта. </p><h2><a id="properties"></a>Свойства</h2>
+<blockquote><p><em>min_value</em> - минимальное значение изменяемой величины.<br/><em>max_value</em> - максимальное значение изменяемой величины.<br/><em>value</em> - текущее значение изменяемой величины.<br/><em>speed</em> - скорость изменения величины при ее программном изменении. </p>
+</blockquote><p><em>active_index</em> - индекс последнего активного сегмента индикатора громкости. </p><p>Регулятор громкости с индикатором в виде сегментного массива - это составной объект. В его состав входят: </p>
+<blockquote><p><em>knob</em> - ручка управления типа <a href="segment-knob.ru.html">SegmentKnob</a>.<br/><em>segment_array</em> - индикатор громкости в виде массив сегментов <a href="segment-array.ru.html">SegmentArray</a>. </p>
+</blockquote><h3>Стиль оформления базового сегмента индикатора громкости</h3>
+<blockquote><p><em>segment_array_gradient</em> - градиент заливки типа <a href="segment-gradient.ru.html">SegmentGradient</a>.<br/><em>segment_array_background</em> - цвет заливки (применяется, если не задан градиент заливки).<br/><em>segment_array_border_width</em> - толщина границ.<br/><em>segment_array_border_color</em> - цвет границ. </p>
+</blockquote><h3>Стиль оформления сегментов индикатора громкости</h3>
+<blockquote><p><em>segment_gradient</em> - градиент заливки типа <a href="segment-gradient.ru.html">SegmentGradient</a>.<br/><em>segment_background</em> - цвет заливки (применяется, если не задан градиент заливки).<br/><em>segment_border_width</em> - толщина границ.<br/><em>segment_border_color</em> - цвет границ. </p>
+</blockquote><h3>Стиль оформления активных сегментов индикатора громкости</h3>
+<blockquote><p><em>active_segment_gradient</em> - градиент заливки типа <a href="segment-gradient.ru.html">SegmentGradient</a>.<br/><em>active_segment_background</em> - цвет заливки (применяется, если не задан градиент заливки).<br/><em>active_segment_border_width</em> - толщина границ.<br/><em>active_segment_border_color</em> - цвет границ. </p>
+</blockquote><h3>Стиль оформления подписей регулятора громкости</h3><p>Подпись крайнего положения ручки регулятора, соответствующего минимальному значению изменяемой величины</p>
+<blockquote><p><em>min_text</em> - текст подписи минимального значения <em>min_font</em> - шрифт подписи <em>min_color</em> - цвет подписи <em>min_border_width</em> - толщина границы текста подписи <em>min_border_color</em> - цвет границы текста подписи<br/><em>min_init_x</em> - начальная координата подписи<br/><em>min_init_y</em> - начальная координата подписи<br/><em>min_offset_x</em> - смещение подписи по оси X<br/><em>min_offset_y</em> - смещение подписи по оси Y </p>
+</blockquote><p>Подпись крайнего положения ручки регулятора, соответствующего максимальному значению изменяемой величины</p>
+<blockquote><p><em>max_text</em> - текст подписи минимального значения <em>max_font</em> - шрифт подписи <em>max_color</em> - цвет подписи <em>max_border_width</em> - толщина границы текста подписи <em>max_border_color</em> - цвет границы текста подписи<br/><em>max_init_x</em> - начальная координата подписи<br/><em>max_init_y</em> - начальная координата подписи<br/><em>max_offset_x</em> - смещение подписи по оси X<br/><em>max_offset_y</em> - смещение подписи по оси Y </p>
+</blockquote><h3>Флаги объекта</h3>
+<blockquote><p><em>visible</em> - видимость. Значение <em>true</em> обеспечивает видимость объекта.<br/><em>in_progress</em> - в процессе. Флаг принимает значение <em>true</em> в процессе анимации. </p>
+</blockquote><h2><a id="methods"></a>Методы</h2>
+<blockquote><p><em>build()</em> - выполняет основные вычисления формы и внешнего вида объекта при его создании, изменении параметров и в процессе анимации.<br/>Этот метод необходимо вызывать после изменения свойств объекта, чтобы они вступили в силу. </p><p><em>calcLabels()</em> - определяет начальное положение подписей в зависимости от параметров базовой спирали индикатора регулятора. </p><p><em>draw()</em> - функция отрисовки объекта. </p><p><em>instanceCopy()</em> - создание независимой копии объекта. </p><p><em>angleToValue(angle)</em> - функция вычисления значения изменяемой величины в зависимости от угла поворота ручки-регулятора. </p><p><em>valueToActiveIndex(value)</em> - функция вычисления активного индекса индикатора громкости в зависимости от текущего значения изменяемой величины. </p><p><em>setValue(value)</em> - функция установки текущего значения изменяемой величины. </p><p><em>changeValue(value, speed, delay)</em> - анимация изменения текущего значения изменяемой величины на <em>value</em> со скоростью <em>speed</em> и задержкой <em>delay</em>. </p><p><em>catchKnob(e)</em> - захват ручки с помощью щелчка левой кнопки мыши на ней. </p>
+  <blockquote><p>Метод установлен в качестве обработчика события <em>mousedown</em> на холсте. </p>
+  </blockquote><p><em>rotateKnobByMouseMovement(e)</em> - вращение захваченной ручки перемещением курсора мыши. </p>
+  <blockquote><p>Метод установлен в качестве обработчика события <em>mousemove</em> на холсте. </p>
+  </blockquote><p><em>rotateKnobByMouseWheel(e)</em> - вращение захваченной ручки вращением колеса мыши. </p>
+  <blockquote><p>Метод установлен в качестве обработчика события <em>wheel</em> на холсте. </p>
+  </blockquote><p><em>releaseKnob()</em> - освобождение захваченной ручки осуществляется отпусканием левой кнопки мыши. </p>
+  <blockquote><p>Метод установлен в качестве обработчика событий <em>mouseup</em> и <em>mouseout</em> на холсте. </p>
+  </blockquote><p><em>removeKnotListeners()</em> - удаление одноименных обработчиков событий холста, исходящих от дочернего объекта типа <em>SegmentKnob</em>. </p>
+  <blockquote><p>Метод необходимо вызывать каждый раз, после выполнения метода <em>build()</em> дочернего объекта типа <em>SegmentKnob</em>. </p>
+  </blockquote>
+</blockquote><h2><a id="events"></a> События</h2><p>События, запускаемые объектом SegmentArrayVolumeControl, реализованы с помощью CustomEvent.<br/>В поле <em>detail.volume_control</em> передается ссылка на сам объект. </p>
+<blockquote><p><em>segment-array-volume-control-changed</em> - состояние регулятора громкости изменено. </p>
+</blockquote>
+<hr/><p><a href="../../readme.ru.html">Главная</a> → Регулятор громкости с индикатором в виде сегментного массива </p>
+</body>
+</html>

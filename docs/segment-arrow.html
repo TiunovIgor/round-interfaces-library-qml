@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>segment-arrow</title>
+<style type="text/css">/*...*/</style>
+</head>
+<body>
+<p><a href="../readme.html">Home</a> → Segment Arrow </p>
+<hr/><h1>SegmentArrow</h1><h2>Contents</h2>
+<ol>
+  <li><a href="#description">Object description</a></li>
+  <li><a href="#dependencies">Object dependencies</a></li>
+  <li><a href="#constructor">Object creation</a></li>
+  <li><a href="#examples">Examples</a></li>
+  <li><a href="#properties">Properties</a></li>
+  <li><a href="#methods">Methods</a></li>
+  <li><a href="#events">Events</a></li>
+</ol><h2><a id="description"></a>Object description</h2><p>Arrow is an auxiliary graphic object for the implementation of "<a href="segment-gauge.html">Gauge</a>" (Fig. 1). </p><p><img src="../docs/images/segment_arrow.png" alt="SegmentArrow" /><br/>Fig. 1 - SegmentArrow</p><p>C - the anchor point of the arrow - is the center of the circle of the arrow rotation.<br/>R - circle radius.<br/>α - arrow angle. </p><p>The arrow has length and width (Fig. 2).</p><p>L - length of arrow image.<br/>W - width of arrow image. </p><p><img src="../docs/images/segment_arrow_geometry.png" alt="SegmentArrowGeometry" /><br/>Fig. 2 - Arrow Geometry </p><h2><a id="dependencies"></a>Object dependencies</h2><p>The following scripts should be included in the &lt;head&gt; section: </p>
+<ul>
+  <li>utilities.js</li>
+</ul><h2><a id="constructor"></a>Object creation</h2><p>To create an object, the main parameters are passed to the constructor function: </p>
+<blockquote><p><em>id</em> - arrow identificator as a text string.<br/><em>context</em> - CanvasRenderingContext2D for drawing the arrow.<br/><em>cx</em> - X coordinate of the circle center.<br/><em>cy</em> - Y coordinate of the circle center.<br/><em>width</em> - arrow width.<br/><em>length</em> - arrow length.<br/><em>angle</em> - the angle of deviation of the arrow from the horizontal axis in degrees. </p>
+</blockquote><h2><a id="examples"></a>Examples</h2><p><a href="../examples/round-gauge-examples.html" target="_blank">Examples</a> of using various properties and methods of the object. </p><h2><a id="properties"></a>Properties</h2><h3>Arrow Style</h3>
+<blockquote><p><em>img</em> - the image that represents the arrow.<br/><em>img_src</em> - path to the arrow image.<br/><em>img_angle</em> - angle of deviation of the image from the horizontal axis in degrees. For example, if the arrow in the image is directed vertically upwards, then the <em>img_angle</em> should be set to -90°.<br/><em>img_offset_x</em> - offset of the image along the X axis to bring the anchor point of the arrow to the center of the circle.<br/><em>img_offset_y</em> - offset of the image along the Y axis to bring the anchor point of the arrow to the center of the circle. </p>
+</blockquote><h3>Object Flags</h3>
+<blockquote><p><em>visible</em> - flag ensures the visibility of the object if set in <em>true</em>.<br/><em>in_progress</em> - flag takes the value <em>true</em> during the animation. </p>
+</blockquote><h2><a id="methods"></a>Methods</h2>
+<blockquote><p><em>calc()</em> - performs basic calculations of the shape and style of a segment when it is created, changed and during animation.<br/>This method should be called after changing the properties of the object so that they take effect. </p><p><em>setImgSrc(path)</em> - sets the path to the arrow image and binds the <em>calc()</em> method to the image load event. </p><p><em>draw()</em> - draws an object. </p><p><em>instanceCopy()</em> - creates an independent copy of the object.</p>
+</blockquote>
+<hr/><p><a href="../readme.html">Home</a> → Segment Arrow </p>
+</body>
+</html>
